@@ -67,7 +67,7 @@ El hallazgo clave es que el **orden de los segmentos del patrón `CATEGORIA. PAR
 
 Se crea `scripts/procesa_poblacion_desgloses.py` con un **parser parametrizado por dimensión** (diseño P8), en vez de un patrón rígido único. `CONFIGURACION_DIMENSIONES` declara, por dimensión, el `archivo`, el `prefijo` a retirar, el `indice_parroquia` y el `indice_categoria` dentro de los segmentos. Así, la nacionalidad simplemente declara `indice_parroquia = 1`, `indice_categoria = 0` y el mismo código sirve para las cinco dimensiones.
 
-El mapeo de la parròquia cruda a una de las **7 canónicas** se hace tras aplicar `.upper()` sobre el segmento, lo que cubre tanto los crudos en mayúsculas como el de lugar de nacimiento en capitalización tipo título.
+El mapeo de la parròquia cruda a una de las **7 canónicas** se hace tras aplicar `.upper` sobre el segmento, lo que cubre tanto los crudos en mayúsculas como el de lugar de nacimiento en capitalización tipo título.
 
 ### Salida: una tabla larga única
 
@@ -99,4 +99,4 @@ python scripts/procesa_poblacion_desgloses.py
 
 ## Conclusión
 
-Se recuperaron dos crudos antes excluidos reclasificándolos **por su contenido real** (umbrales de pobreza y tasa de fecundidad) en vez de por su nombre de archivo engañoso, y se integraron los **cinco desgloses de población** mediante un parser configurable que absorbe el orden variable de los segmentos (incluida la inversión de la nacionalidad). Todo con linaje OBSERVADO, conversión de la coma decimal catalana cuando aplica, exclusiones documentadas sin inventar cifras y los crudos originales intactos como fuente de verdad. Queda registrado aquí con prefijo numérico para la trazabilidad exigida por el proyecto (Req 8.7).
+Se recuperaron dos crudos antes excluidos reclasificándolos **por su contenido real** (umbrales de pobreza y tasa de fecundidad) en vez de por su nombre de archivo engañoso, y se integraron los **cinco desgloses de población** mediante un parser configurable que absorbe el orden variable de los segmentos (incluida la inversión de la nacionalidad). Todo con linaje OBSERVADO, conversión de la coma decimal catalana cuando aplica, exclusiones documentadas sin inventar cifras y los crudos originales intactos como fuente de verdad. Queda registrado aquí con prefijo numérico para la trazabilidad exigida por el proyecto.

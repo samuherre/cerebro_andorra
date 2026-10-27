@@ -30,8 +30,8 @@ Ambas herramientas se probaron sobre los **mismos** archivos crudos, sin modific
 
 Para el volumen de esta feature (decenas de filas) las ventajas de DuckDB en gestión de memoria y rendimiento **no se materializan**. En cambio, pandas ofrece:
 
-- `melt()` para la transformación ancho→largo de la población de forma directa (Requisito 1.1 y siguientes).
-- Manipulación de strings y expresiones regulares por celda más natural para limpiar las celdas de Indomio del tipo `7,115(+14.8%)` (Requisito 2.1 y siguientes).
+- `melt()` para la transformación ancho→largo de la población de forma directa.
+- Manipulación de strings y expresiones regulares por celda más natural para limpiar las celdas de Indomio del tipo `7,115(+14.8%)`.
 - Integración nativa con Streamlit (`st.dataframe`, `st.cache_data`), que es el tramo de Vistas de esta misma feature.
 - Menor curva de aprendizaje, coherente con el steering del proyecto (Python 3 + CSV).
 

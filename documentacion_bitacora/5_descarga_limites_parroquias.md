@@ -24,8 +24,8 @@ Consecuencia: ese archivo **no sirve** para un coropletas por parròquia (se nec
 
 El extractor sigue las convenciones de acceso a fuentes externas del proyecto:
 
-- **`User-Agent` de navegador real (Req 11.5):** cada petición envía un header `User-Agent` de navegador (cadena tipo Chrome sobre Windows) para identificarnos ante el servidor y evitar bloqueos anti-bot (403/406).
-- **Pausa de cortesía de 12 s (Req 11.5, 11.7):** antes de la petición se aplica `time.sleep(PAUSA_CORTESIA_S)` con `PAUSA_CORTESIA_S = 12`. Doce segundos garantizan no superar el límite de ~5 peticiones/minuto declarado por la fuente oficial.
+- **`User-Agent` de navegador real:** cada petición envía un header `User-Agent` de navegador (cadena tipo Chrome sobre Windows) para identificarnos ante el servidor y evitar bloqueos anti-bot (403/406).
+- **Pausa de cortesía de 12 s:** antes de la petición se aplica `time.sleep(PAUSA_CORTESIA_S)` con `PAUSA_CORTESIA_S = 12`. Doce segundos garantizan no superar el límite de ~5 peticiones/minuto declarado por la fuente oficial.
 - **Timeout explícito:** la petición HTTP usa un `timeout` de 120 s para no quedar colgada indefinidamente.
 - **Mensajes en español:** todo el registro por consola va en español, coherente con el resto del proyecto.
 
@@ -41,13 +41,13 @@ Ante un 429 o un bloqueo, la función `_documenta_bloqueo_bitacora` **añade** (
 
 ## Idempotencia y crudos intactos
 
-- **No re-descarga:** `ya_descargado(ruta)` comprueba si `parroquias_andorra.geojson` ya existe en disco. Si existe, `main()` informa y termina sin descargar (idempotencia y cortesía con la fuente).
+- **No re-descarga:** `ya_descargado(ruta)` comprueba si `parroquias_andorra.geojson` ya existe en disco. Si existe, `main` informa y termina sin descargar (idempotencia y cortesía con la fuente).
 - **Nunca toca otros crudos:** este es el **único** script del proyecto que escribe en `datos_crudos/`, y sólo para **crear** este archivo nuevo. No modifica, sobrescribe ni elimina ninguno de los crudos existentes (que son la fuente de verdad inmutable).
 - **Fuera del pipeline:** la descarga **no** forma parte de `ejecuta_pipeline.py`; se ejecuta aparte y bajo demanda, para no acoplar la generación del lago a una llamada de red.
 
 ## Plan B (cuando `descarga` devuelve `False`)
 
-Si no se consigue el GeoJSON de límites (bloqueo 429, error de red o contenido no válido), `main()` devuelve un código `!= 0` y la `Vista_Mapa` activa su **Plan B**: una representación por **puntos/centroides** de las 7 parròquies con `st.map` (un marcador por parròquia según el indicador seleccionado), sin dependencias adicionales. En ese caso cada parròquia conserva su **cifra gobernada** (valor + metadato + linaje) y queda constancia aquí de que el coropletas quedó pendiente. Cuando el GeoJSON ya existe (nuevo o previo), `main()` devuelve `0` y el mapa usa el coropletas con Plotly Express (ver bitácora 4).
+Si no se consigue el GeoJSON de límites (bloqueo 429, error de red o contenido no válido), `main` devuelve un código `!= 0` y la `Vista_Mapa` activa su **Plan B**: una representación por **puntos/centroides** de las 7 parròquies con `st.map` (un marcador por parròquia según el indicador seleccionado), sin dependencias adicionales. En ese caso cada parròquia conserva su **cifra gobernada** (valor + metadato + linaje) y queda constancia aquí de que el coropletas quedó pendiente. Cuando el GeoJSON ya existe (nuevo o previo), `main` devuelve `0` y el mapa usa el coropletas con Plotly Express (ver bitácora 4).
 
 ## Cómo ejecutarlo
 
@@ -73,13 +73,13 @@ La función `descarga_overpass(url)` se corrigió así (diseño H3):
 - **`POST` en lugar de `GET`**, enviando la consulta Overpass QL en el cuerpo (`data=consulta`).
 - **Cabecera `Accept: application/json`** para declarar el formato aceptado (esto es lo que elimina el 406).
 - **Cabecera `Content-Type: application/x-www-form-urlencoded`** acorde al cuerpo enviado.
-- Se conserva el **`User-Agent` de navegador real**, el **timeout de 30 s** (`TIMEOUT_HTTP_S`) y el manejo explícito de 200 / 429 (reintento ≤ 3, respetando `Retry-After` o esperando ≥ 12 s) / 406 / otros, con registro del código HTTP por consola en español (Req 6.1, 6.2).
+- Se conserva el **`User-Agent` de navegador real**, el **timeout de 30 s** (`TIMEOUT_HTTP_S`) y el manejo explícito de 200 / 429 (reintento ≤ 3, respetando `Retry-After` o esperando ≥ 12 s) / 406 / otros, con registro del código HTTP por consola en español.
 
 Además, la respuesta de Overpass con `out geom;` **no es un GeoJSON**: es el formato propio de Overpass (`elements` con `members` y su `geometry`). Se añadió `_overpass_a_featurecollection(...)` para convertir las relaciones administrativas a un `FeatureCollection` de polígonos antes de validarlas.
 
 ### Cadena de mirrors (hasta 3 endpoints)
 
-`descarga(...)` prueba en orden hasta tres endpoints mirror de Overpass antes de rendirse (Req 6.3):
+`descarga(...)` prueba en orden hasta tres endpoints mirror de Overpass antes de rendirse:
 
 1. `https://overpass-api.de/api/interpreter`
 2. `https://overpass.kumi.systems/api/interpreter`
@@ -95,14 +95,14 @@ Si **ningún** endpoint de Overpass produce las 7 parròquies válidas, se recur
 https://nominatim.openstreetmap.org/search?q=<PARRÒQUIA>,+Andorra&format=json&polygon_geojson=1&limit=1
 ```
 
-- `construye_featurecollection_nominatim()` hace **una consulta por parròquia** (7 en total) para extraer el `geojson` de polígono (`Polygon`/`MultiPolygon`) de cada una.
+- `construye_featurecollection_nominatim` hace **una consulta por parròquia** (7 en total) para extraer el `geojson` de polígono (`Polygon`/`MultiPolygon`) de cada una.
 - **Pausa de cortesía ≥ 1 s por petición** (`PAUSA_NOMINATIM_S = 1`): Nominatim exige respetar 1 petición/segundo, un ritmo distinto al de Overpass. Se envía igualmente el `User-Agent` de navegador real y el timeout de 30 s.
-- **Licencia:** *Data © OpenStreetMap contributors, ODbL 1.0* (campo `licence` verificado en la respuesta). Licencia clara, coherente con el requisito de usar solo endpoints alternativos con licencia identificable (Req 6.3).
+- **Licencia:** *Data © OpenStreetMap contributors, ODbL 1.0* (campo `licence` verificado en la respuesta). Licencia clara, coherente con el requisito de usar solo endpoints alternativos con licencia identificable.
 - Solo se construye el `FeatureCollection` si se obtienen **exactamente 7 polígonos no vacíos**; en caso contrario se devuelve `None` y no se guarda nada.
 
 ### Validación estricta y crudos intactos
 
-`valida_7_parroquies(geojson)` exige un `FeatureCollection` con **exactamente 7 features**, cada una con geometría `Polygon`/`MultiPolygon` de coordenadas no vacías (Req 6.4). Solo si supera esta validación se escribe `datos_crudos/parroquias_andorra.geojson`. El extractor es idempotente (si el archivo ya existe y valida las 7 parròquies no re-descarga, Req 6.5) y es el único que crea este archivo nuevo, sin modificar ni eliminar ningún otro crudo (Req 8.8). Si tras agotar Overpass y Nominatim no se consiguen las 7 parròquies, se documenta en esta bitácora los endpoints probados y los códigos observados y **no** se guarda un GeoJSON inventado; la `Vista_Mapa` activa entonces su Plan B por centroides.
+`valida_7_parroquies(geojson)` exige un `FeatureCollection` con **exactamente 7 features**, cada una con geometría `Polygon`/`MultiPolygon` de coordenadas no vacías. Solo si supera esta validación se escribe `datos_crudos/parroquias_andorra.geojson`. El extractor es idempotente (si el archivo ya existe y valida las 7 parròquies no re-descarga,) y es el único que crea este archivo nuevo, sin modificar ni eliminar ningún otro crudo. Si tras agotar Overpass y Nominatim no se consiguen las 7 parròquies, se documenta en esta bitácora los endpoints probados y los códigos observados y **no** se guarda un GeoJSON inventado; la `Vista_Mapa` activa entonces su Plan B por centroides.
 
 ## Conclusión
 

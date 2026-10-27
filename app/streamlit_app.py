@@ -5,7 +5,7 @@ Este módulo es el que se lanza desde la raíz del repositorio con::
     streamlit run app/streamlit_app.py
 
 Define la navegación de la aplicación mediante una barra lateral que enruta a
-las cuatro vistas del proyecto (Req 5.1, 6.1, 7.1, 8.1):
+las cuatro vistas del proyecto:
 
 1. Panorama — resumen del país con las cifras clave.
 2. Gente / Población — población por parròquia.
@@ -23,7 +23,7 @@ Incluye además una Compuerta_Acceso OPCIONAL (``compuerta_acceso``): si existe
 una clave configurada en el servidor (``st.secrets`` o la variable de entorno
 ``CLAVE_ACCESO``) se pide esa clave antes de mostrar la app y se compara en el
 servidor; si no hay clave configurada, la compuerta queda desactivada y la app
-arranca con normalidad. La clave nunca se versiona (Req 8.7, 8.8).
+arranca con normalidad. La clave nunca se versiona.
 
 Textos de interfaz y mensajes de consola en español, coherentes con el resto
 del proyecto.
@@ -60,7 +60,7 @@ from vistas import (  # noqa: E402
 # Mapa de navegación: rótulo de la barra lateral -> función render() de la vista
 # correspondiente. El orden define el orden de las opciones en el menú.
 # Primero las vistas heredadas de la v1 y a continuación las nuevas de la Parte 2
-# (Mapa, Preguntas y Economía), conservando un orden lógico (Req 8.3).
+# (Mapa, Preguntas y Economía), conservando un orden lógico.
 _VISTAS = {
     "Panorama": panorama.render,
     "Gente / Población": poblacion.render,
@@ -72,13 +72,12 @@ _VISTAS = {
 }
 
 # Nombres del grupo que se muestran de forma visible en la barra lateral del
-# Despliegue_Publico (Req 8.3). TODO: completar con los nombres reales de los
-# integrantes del grupo antes de publicar.
-_EQUIPO = "Equipo: [Nombres del grupo]"
+# despliegue publico.
+_EQUIPO = "Equipo: Daniel Zapata, Samuel Herrera, Tomas Londono"
 
 # Nombre de la clave de la Compuerta_Acceso tanto en st.secrets como en la
 # variable de entorno. La clave NUNCA se versiona (ver .gitignore /
-# .streamlit/secrets.toml); se compara siempre en el servidor (Req 8.7, 8.8).
+# .streamlit/secrets.toml); se compara siempre en el servidor.
 _NOMBRE_CLAVE_COMPUERTA = "CLAVE_ACCESO"
 
 
@@ -88,8 +87,7 @@ def _clave_compuerta_configurada() -> str | None:
     La compuerta es OPCIONAL: solo se activa si existe una clave en el servidor,
     ya sea en ``st.secrets`` o en una variable de entorno. Si no hay clave
     configurada, devuelve ``None`` y la app funciona con normalidad (compuerta
-    desactivada por defecto). La clave nunca se almacena en el repositorio
-    (Req 8.7, 8.8).
+    desactivada por defecto). La clave nunca se almacena en el repositorio.
 
     Returns:
         La clave configurada (texto no vacío) o ``None`` si la compuerta no está
@@ -113,7 +111,7 @@ def _clave_compuerta_configurada() -> str | None:
 
 
 def compuerta_acceso() -> bool:
-    """Compuerta_Acceso OPCIONAL comparada en el servidor (Req 8.7, 8.8).
+    """Compuerta_Acceso OPCIONAL comparada en el servidor.
 
     Si no hay clave configurada en el servidor (``st.secrets`` o variable de
     entorno), la compuerta está desactivada y la función devuelve ``True`` sin
@@ -160,7 +158,7 @@ def main() -> None:
 
     Establece la configuración global de la página, dibuja la barra lateral con
     el selector de vistas y, según la opción elegida, invoca la función
-    ``render()`` de la vista correspondiente (Req 5.1, 6.1, 7.1, 8.1).
+    ``render()`` de la vista correspondiente.
 
     Returns:
         None. El efecto es la representación de la app en la interfaz de
@@ -174,7 +172,7 @@ def main() -> None:
 
     # Compuerta_Acceso OPCIONAL: solo pide clave si hay una configurada en el
     # servidor (st.secrets / variable de entorno). Si no, no interrumpe el
-    # arranque y la app funciona con normalidad (Req 8.7, 8.8).
+    # arranque y la app funciona con normalidad.
     if not compuerta_acceso():
         return
 
@@ -190,7 +188,7 @@ def main() -> None:
         index=0,
     )
 
-    # Nombres del grupo visibles en la barra lateral (Req 8.3).
+    # Nombres del grupo visibles en la barra lateral.
     st.sidebar.caption(_EQUIPO)
 
     # Enrutar: invocar el render() de la vista elegida.

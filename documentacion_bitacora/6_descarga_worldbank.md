@@ -20,19 +20,19 @@ Durante el diseño se compararon tres candidatas para el Dominio_Economia_Empleo
 | Portal `sig.govern.ad` (scraping) | Granularidad local | Sin API abierta clara; riesgo anti-bot; licencia difusa | Descartada en la Parte 3 (se intentó, se documenta) |
 | Eurostat | Series largas | Cobertura de Andorra muy parcial | Descartada |
 
-Se elige World Bank por tener una API REST abierta, estable, verificada para Andorra y con **licencia identificable de forma clara** (requisito indispensable para integrar una Fuente_Oficial_Nueva, Req 4). La limitación de granularidad (país, no parròquia) se asume de forma explícita: los indicadores se presentan a escala Andorra.
+Se elige World Bank por tener una API REST abierta, estable, verificada para Andorra y con **licencia identificable de forma clara** (requisito indispensable para integrar una Fuente_Oficial_Nueva,). La limitación de granularidad (país, no parròquia) se asume de forma explícita: los indicadores se presentan a escala Andorra.
 
 ## Fuente, endpoint y licencia
 
 - **Fuente a citar:** *Banco Mundial (World Bank Open Data, API v2)*.
 - **Endpoint REST JSON** (verificado para el país `AD`):
 
-  ```
-  https://api.worldbank.org/v2/country/AD/indicator/<CODIGO>?format=json&date=2015:2024
-  ```
+ ```
+ https://api.worldbank.org/v2/country/AD/indicator/<CODIGO>?format=json&date=2015:2024
+ ```
 
 - **Forma de la respuesta:** una lista JSON de dos elementos. El primero es metadata de paginación; el **segundo** es el array de observaciones, cada una con `date` (año, texto) y `value` (número o `null`). El procesador `procesa_economia.py` toma el segundo elemento y **omite** las observaciones con `value = null` (no se inventan cifras).
-- **Licencia:** **CC BY 4.0** (atribución). Se registra de forma literal en el `Inventario_Fuentes` (columna `licencia`) y en el `Diccionario_Datos` (Req 4.7, 8.4).
+- **Licencia:** **CC BY 4.0** (atribución). Se registra de forma literal en el `Inventario_Fuentes` (columna `licencia`) y en el `Diccionario_Datos`.
 - **Linaje:** **OBSERVADO** (organismo internacional oficial).
 - **Acceso:** sin autenticación.
 
@@ -51,7 +51,7 @@ Verificación puntual: `NY.GDP.MKTP.CD` devuelve 2015–2024 con valores reales 
 
 ## Convenciones de acceso ético aplicadas
 
-El extractor sigue las convenciones de acceso a fuentes externas del proyecto (Req 4.1–4.4):
+El extractor sigue las convenciones de acceso a fuentes externas del proyecto:
 
 - **`User-Agent` de navegador real:** cada petición envía un header `User-Agent` (cadena tipo Chrome sobre Windows) para identificarnos y evitar bloqueos anti-bot (403/406).
 - **Pausa de cortesía de 12 s:** antes de cada indicador se aplica `time.sleep(PAUSA_CORTESIA_S)` con `PAUSA_CORTESIA_S = 12`. Doce segundos garantizan no superar el límite de ~5 peticiones/minuto declarado por la fuente oficial.
@@ -60,13 +60,13 @@ El extractor sigue las convenciones de acceso a fuentes externas del proyecto (R
 
 ## Manejo explícito de códigos de estado
 
-El extractor maneja de forma explícita el resultado de cada petición y lo registra por consola (Req 4.1–4.4, 4.8):
+El extractor maneja de forma explícita el resultado de cada petición y lo registra por consola:
 
 - **200 (éxito):** valida que la respuesta sea JSON legible, crea el directorio de salida de forma idempotente (`os.makedirs(..., exist_ok=True)`) y guarda el JSON crudo por indicador en `datos_crudos/worldbank_<codigo>.json`. Devuelve `True`.
 - **429 (límite de peticiones):** reintenta hasta `MAX_REINTENTOS_429 = 3` veces, respetando el `Retry-After` de la respuesta si viene o esperando al menos ~60 s entre reintentos. No se guarda ningún archivo parcial si no se alcanza un 200.
 - **406 u otro código / error de red:** se registra la causa (código HTTP o excepción de `requests`), se documenta el hallazgo en esta bitácora y **no** se guarda nada.
 
-Ante un bloqueo persistente, el hallazgo se documenta aquí en lugar de forzar el acceso, y la `Vista_Economia` muestra la ausencia de la fuente económica sin inventar cifras (Req 5.3).
+Ante un bloqueo persistente, el hallazgo se documenta aquí en lugar de forzar el acceso, y la `Vista_Economia` muestra la ausencia de la fuente económica sin inventar cifras.
 
 ## Idempotencia y crudos intactos
 
@@ -84,4 +84,4 @@ python scripts/descarga_worldbank.py
 
 ## Conclusión
 
-La economía de Andorra se integra desde el **Banco Mundial (World Bank Open Data, API v2)** con licencia clara **CC BY 4.0** y linaje **OBSERVADO**. La descarga es ética (header `User-Agent` de navegador real, pausa de cortesía de 12 s entre indicadores, timeout de 30 s, manejo explícito de 200/429/406), idempotente (no re-descarga si el JSON ya existe) y sin tocar los demás crudos. Ante bloqueos se documenta el hallazgo en lugar de forzar el acceso y la `Vista_Economia` degrada mostrando la ausencia. Queda registrado aquí para trazabilidad de la estrategia de extracción exigida por el proyecto (Req 4.7).
+La economía de Andorra se integra desde el **Banco Mundial (World Bank Open Data, API v2)** con licencia clara **CC BY 4.0** y linaje **OBSERVADO**. La descarga es ética (header `User-Agent` de navegador real, pausa de cortesía de 12 s entre indicadores, timeout de 30 s, manejo explícito de 200/429/406), idempotente (no re-descarga si el JSON ya existe) y sin tocar los demás crudos. Ante bloqueos se documenta el hallazgo en lugar de forzar el acceso y la `Vista_Economia` degrada mostrando la ausencia. Queda registrado aquí para trazabilidad de la estrategia de extracción exigida por el proyecto.
