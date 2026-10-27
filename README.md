@@ -33,16 +33,11 @@ Los nombres tambien se muestran de forma visible en la barra lateral de la app
 
 ## Enlace al repositorio
 
-> Reemplazar el marcador por la URL real del repositorio una vez publicado.
-
-- Repositorio: [URL del repositorio]
+- Repositorio: https://github.com/samuherre/cerebro_andorra
 
 ## Enlace al despliegue publico
 
-> Reemplazar el marcador por la URL publica real una vez publicada la app en
-> Streamlit Community Cloud.
-
-- Despliegue publico (Streamlit Community Cloud): [URL de Streamlit Community Cloud]
+- Despliegue publico (Streamlit Community Cloud): https://cerebroandorra.streamlit.app/
 
 El despliegue usa unicamente servicios y llaves gratuitos, sin tarjeta de credito
 y sin servicios de pago. El punto de entrada es `app/streamlit_app.py` y las
