@@ -1,0 +1,31 @@
+indicador;codigo;anio;valor;unidad;fuente;vigencia;fecha_prueba;linaje
+PIB (US$ corrientes);NY.GDP.MKTP.CD;2024;4044249678.65625;US$;Banco Mundial (World Bank Open Data, API v2);2024;2026-10-26;OBSERVADO
+PIB (US$ corrientes);NY.GDP.MKTP.CD;2023;3785067331.88242;US$;Banco Mundial (World Bank Open Data, API v2);2023;2026-10-26;OBSERVADO
+PIB (US$ corrientes);NY.GDP.MKTP.CD;2022;3380612573.4825;US$;Banco Mundial (World Bank Open Data, API v2);2022;2026-10-26;OBSERVADO
+PIB (US$ corrientes);NY.GDP.MKTP.CD;2021;3324647529.41855;US$;Banco Mundial (World Bank Open Data, API v2);2021;2026-10-26;OBSERVADO
+PIB (US$ corrientes);NY.GDP.MKTP.CD;2020;2891001149.40079;US$;Banco Mundial (World Bank Open Data, API v2);2020;2026-10-26;OBSERVADO
+PIB (US$ corrientes);NY.GDP.MKTP.CD;2019;3155149347.92156;US$;Banco Mundial (World Bank Open Data, API v2);2019;2026-10-26;OBSERVADO
+PIB (US$ corrientes);NY.GDP.MKTP.CD;2018;3218419896.93333;US$;Banco Mundial (World Bank Open Data, API v2);2018;2026-10-26;OBSERVADO
+PIB (US$ corrientes);NY.GDP.MKTP.CD;2017;3000162081.22353;US$;Banco Mundial (World Bank Open Data, API v2);2017;2026-10-26;OBSERVADO
+PIB (US$ corrientes);NY.GDP.MKTP.CD;2016;2896610479.86771;US$;Banco Mundial (World Bank Open Data, API v2);2016;2026-10-26;OBSERVADO
+PIB (US$ corrientes);NY.GDP.MKTP.CD;2015;2789881258.60547;US$;Banco Mundial (World Bank Open Data, API v2);2015;2026-10-26;OBSERVADO
+PIB per cápita;NY.GDP.PCAP.CD;2024;49357.437070178;US$;Banco Mundial (World Bank Open Data, API v2);2024;2026-10-26;OBSERVADO
+PIB per cápita;NY.GDP.PCAP.CD;2023;46812.448450114;US$;Banco Mundial (World Bank Open Data, API v2);2023;2026-10-26;OBSERVADO
+PIB per cápita;NY.GDP.PCAP.CD;2022;42414.0590111349;US$;Banco Mundial (World Bank Open Data, API v2);2022;2026-10-26;OBSERVADO
+PIB per cápita;NY.GDP.PCAP.CD;2021;42425.6996761083;US$;Banco Mundial (World Bank Open Data, API v2);2021;2026-10-26;OBSERVADO
+PIB per cápita;NY.GDP.PCAP.CD;2020;37361.090067211;US$;Banco Mundial (World Bank Open Data, API v2);2020;2026-10-26;OBSERVADO
+PIB per cápita;NY.GDP.PCAP.CD;2019;41257.8045861543;US$;Banco Mundial (World Bank Open Data, API v2);2019;2026-10-26;OBSERVADO
+PIB per cápita;NY.GDP.PCAP.CD;2018;42819.774579353;US$;Banco Mundial (World Bank Open Data, API v2);2018;2026-10-26;OBSERVADO
+PIB per cápita;NY.GDP.PCAP.CD;2017;40672.9943362327;US$;Banco Mundial (World Bank Open Data, API v2);2017;2026-10-26;OBSERVADO
+PIB per cápita;NY.GDP.PCAP.CD;2016;40129.8192026671;US$;Banco Mundial (World Bank Open Data, API v2);2016;2026-10-26;OBSERVADO
+PIB per cápita;NY.GDP.PCAP.CD;2015;38654.9347217207;US$;Banco Mundial (World Bank Open Data, API v2);2015;2026-10-26;OBSERVADO
+Población total;SP.POP.TOTL;2024;81938;personas;Banco Mundial (World Bank Open Data, API v2);2024;2026-10-26;OBSERVADO
+Población total;SP.POP.TOTL;2023;80856;personas;Banco Mundial (World Bank Open Data, API v2);2023;2026-10-26;OBSERVADO
+Población total;SP.POP.TOTL;2022;79705;personas;Banco Mundial (World Bank Open Data, API v2);2022;2026-10-26;OBSERVADO
+Población total;SP.POP.TOTL;2021;78364;personas;Banco Mundial (World Bank Open Data, API v2);2021;2026-10-26;OBSERVADO
+Población total;SP.POP.TOTL;2020;77380;personas;Banco Mundial (World Bank Open Data, API v2);2020;2026-10-26;OBSERVADO
+Población total;SP.POP.TOTL;2019;76474;personas;Banco Mundial (World Bank Open Data, API v2);2019;2026-10-26;OBSERVADO
+Población total;SP.POP.TOTL;2018;75162;personas;Banco Mundial (World Bank Open Data, API v2);2018;2026-10-26;OBSERVADO
+Población total;SP.POP.TOTL;2017;73763;personas;Banco Mundial (World Bank Open Data, API v2);2017;2026-10-26;OBSERVADO
+Población total;SP.POP.TOTL;2016;72181;personas;Banco Mundial (World Bank Open Data, API v2);2016;2026-10-26;OBSERVADO
+Población total;SP.POP.TOTL;2015;72174;personas;Banco Mundial (World Bank Open Data, API v2);2015;2026-10-26;OBSERVADO

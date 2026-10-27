@@ -1,0 +1,30 @@
+# --- Secretos y configuración local (NUNCA versionar) ---
+# La clave de la Compuerta_Acceso vive solo en el servidor (st.secrets / env).
+# Si apareciera en un archivo versionado, el sistema se considera no conforme
+# (Req 8.7, 8.8). Mantener secrets.toml fuera del control de versiones.
+.streamlit/secrets.toml
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Entornos virtuales ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Cachés de herramientas ---
+.pytest_cache/
+.hypothesis/
+.mypy_cache/
+.ruff_cache/
+
+# --- Sistema operativo / editores ---
+.DS_Store
+Thumbs.db
+
+# --- Kiro (specs, steering y configuración del IDE, no versionar) ---
+.kiro/

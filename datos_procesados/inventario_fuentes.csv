@@ -1,0 +1,14 @@
+id_fuente;nombre;fuente;vigencia;fecha_prueba;linaje;estado;motivo;licencia
+F01;estadistica_id798_població_població_per_parròquia.csv;Departament d'Estadística d'Andorra (sig.govern.ad);2024;2026-10-26;OBSERVADO;integrado;;Departament d'Estadística d'Andorra
+F02;precios_vivienda_indomio.csv;Indomio (scraping, precios de oferta);2025;2026-10-26;PROXY;integrado;;
+F03;turismo.csv;Departament d'Estadística d'Andorra (estadistica_681, Andorra Turisme SAU);2020-2025;2026-10-26;OBSERVADO;integrado;;Departament d'Estadística d'Andorra
+F04;inversiones_inmobiliarias.csv;Departament d'Estadística d'Andorra (estadistica_2729, inversions immobiliàries);2020-2025;2026-10-26;OBSERVADO;integrado;;Departament d'Estadística d'Andorra
+F10;poblacion_desgloses.csv;Departament d'Estadística d'Andorra (sig.govern.ad);2020-2025;2026-10-26;OBSERVADO;integrado;;Departament d'Estadística d'Andorra
+F11;umbrales_pobreza.csv;Departament d'Estadística d'Andorra (sig.govern.ad);2020-2025;2026-10-26;OBSERVADO;integrado;Reclasificado desde oficial_820 (contenido real: umbrales de pobreza);Departament d'Estadística d'Andorra
+F12;tasa_fecundidad.csv;Departament d'Estadística d'Andorra (sig.govern.ad);2020-2025;2026-10-26;OBSERVADO;integrado;Reclasificado desde oficial_810 (contenido real: tasa de fecundidad);Departament d'Estadística d'Andorra
+F13;economia_worldbank.csv;Banco Mundial (World Bank Open Data, API v2);2015-2024;2026-10-26;OBSERVADO;integrado;;CC BY 4.0
+F05;oficial_820_transacciones_inmobiliarias.csv;Departament d'Estadística d'Andorra (sig.govern.ad);;;OBSERVADO;excluido;El contenido no coincide con el nombre del archivo: reclasificado como umbrales de pobreza en umbrales_pobreza.csv;Departament d'Estadística d'Andorra
+F06;oficial_810_indicadores_economicos.csv;Departament d'Estadística d'Andorra (sig.govern.ad);;;OBSERVADO;excluido;El contenido no coincide con el nombre del archivo: reclasificado como tasa de fecundidad en tasa_fecundidad.csv;Departament d'Estadística d'Andorra
+F07;estadistica_id1091..1138 (edad/sexo/nacionalidad);Departament d'Estadística d'Andorra (sig.govern.ad);;;OBSERVADO;candidato;Catalogado pero no procesado todavía;Departament d'Estadística d'Andorra
+F08;edificios_andorra.geojson;OpenStreetMap vía Overpass API;;;OBSERVADO;candidato;Capa de detalle urbano fuera de alcance de la Parte 2;ODbL (OpenStreetMap contributors)
+F09;parroquias_andorra.geojson;OpenStreetMap vía Overpass API;;;OBSERVADO;candidato;Límites de las 7 parròquies para la Vista_Mapa;ODbL (OpenStreetMap contributors)

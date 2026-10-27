@@ -1,0 +1,9 @@
+# Dependencias de Cerebro Andorra Web
+# Versiones fijadas con == (sin rangos abiertos) para ejecucion local reproducible.
+
+pandas==3.0.1
+streamlit==1.64.0
+hypothesis==6.168.2
+plotly==5.24.1
+requests==2.32.3
+openpyxl==3.1.5
