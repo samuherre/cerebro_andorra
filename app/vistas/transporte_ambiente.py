@@ -10,6 +10,7 @@ Reúne dos bloques gobernados (linaje OBSERVADO):
    CO2 per cápita y exposición a partículas PM2.5 (Banco Mundial, CC BY 4.0).
 """
 
+import importlib
 import sys
 from pathlib import Path
 
@@ -23,6 +24,9 @@ if str(_DIR_APP) not in sys.path:
 import carga_datos  # noqa: E402
 import componentes  # noqa: E402
 import estilos  # noqa: E402
+
+if not hasattr(carga_datos, "carga_equipamientos_suelo"):
+    importlib.reload(carga_datos)
 
 _ID_FUENTE_EQUIP = "F18"
 _ID_FUENTE_WB_SECTORIAL = "F19"
@@ -49,6 +53,8 @@ def _seccion_transporte() -> None:
         "aparcamientos y estaciones de servicio (OpenStreetMap, licencia ODbL, linaje OBSERVADO)."
     )
 
+    if not hasattr(carga_datos, "carga_equipamientos_suelo"):
+        importlib.reload(carga_datos)
     equip = carga_datos.carga_equipamientos_suelo()
     if equip is None or equip.empty:
         st.info("No hay datos procesados de infraestructura de transporte.")
@@ -156,6 +162,8 @@ def _seccion_energia_ambiente() -> None:
         "(World Bank Open Data, licencia CC BY 4.0, linaje OBSERVADO)."
     )
 
+    if not hasattr(carga_datos, "carga_salud_ambiente"):
+        importlib.reload(carga_datos)
     df = carga_datos.carga_salud_ambiente()
     if df is None or df.empty:
         st.info("No hay indicadores ambientales procesados en este momento.")

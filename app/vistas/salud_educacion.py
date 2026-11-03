@@ -11,6 +11,7 @@ Integra dos fuentes gobernadas (linaje OBSERVADO):
      territorio por parròquia.
 """
 
+import importlib
 import sys
 from pathlib import Path
 
@@ -24,6 +25,9 @@ if str(_DIR_APP) not in sys.path:
 import carga_datos  # noqa: E402
 import componentes  # noqa: E402
 import estilos  # noqa: E402
+
+if not hasattr(carga_datos, "carga_salud_ambiente"):
+    importlib.reload(carga_datos)
 
 _ID_FUENTE_WB_SECTORIAL = "F19"
 _ID_FUENTE_EQUIP = "F18"
@@ -117,6 +121,8 @@ def _bloque_equipamientos_salud_educacion() -> None:
         "Equipamientos georreferenciados en OpenStreetMap (licencia ODbL, linaje OBSERVADO)."
     )
 
+    if not hasattr(carga_datos, "carga_equipamientos_suelo"):
+        importlib.reload(carga_datos)
     equip = carga_datos.carga_equipamientos_suelo()
     if equip is None or equip.empty:
         st.info("No hay datos de equipamientos territoriales procesados.")
@@ -204,6 +210,8 @@ def render() -> None:
         "Andorra, todos con trazabilidad y linaje OBSERVADO.",
     )
 
+    if not hasattr(carga_datos, "carga_salud_ambiente"):
+        importlib.reload(carga_datos)
     df = carga_datos.carga_salud_ambiente()
     if df is None or df.empty:
         st.warning(

@@ -9,6 +9,7 @@ Integra tres conjuntos gobernados (linaje OBSERVADO):
    equipamientos sobre el territorio.
 """
 
+import importlib
 import sys
 from pathlib import Path
 
@@ -22,6 +23,9 @@ if str(_DIR_APP) not in sys.path:
 import carga_datos  # noqa: E402
 import componentes  # noqa: E402
 import estilos  # noqa: E402
+
+if not hasattr(carga_datos, "carga_poblacion_poble"):
+    importlib.reload(carga_datos)
 
 _ID_FUENTE_POBLES = "F15"
 _ID_FUENTE_EDIFICIOS = "F17"
@@ -43,6 +47,8 @@ def _seccion_pobles() -> None:
         "(Departament d'Estadística d'Andorra, linaje OBSERVADO)."
     )
 
+    if not hasattr(carga_datos, "carga_poblacion_poble"):
+        importlib.reload(carga_datos)
     pobles = carga_datos.carga_poblacion_poble()
     if pobles is None or pobles.empty:
         st.info("No hay datos procesados de población por poble disponibles.")
@@ -191,6 +197,8 @@ def _seccion_suelo_edificios() -> None:
         "(edificios_andorra.geojson, licencia ODbL, linaje OBSERVADO)."
     )
 
+    if not hasattr(carga_datos, "carga_edificios_suelo"):
+        importlib.reload(carga_datos)
     edif = carga_datos.carga_edificios_suelo()
     if edif is None or edif.empty:
         st.info("No hay datos procesados de morfología de edificios.")

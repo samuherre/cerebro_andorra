@@ -497,6 +497,9 @@ def _bloque_cruces_sexo(anio: int) -> None:
         "nacimiento a escala nacional (linaje OBSERVADO, F16)."
     )
 
+    if not hasattr(carga_datos, "carga_poblacion_cruces_sexo"):
+        import importlib
+        importlib.reload(carga_datos)
     cruces = carga_datos.carga_poblacion_cruces_sexo()
     if cruces is None or cruces.empty:
         st.info("Sin datos procesados de cruces por sexo.")

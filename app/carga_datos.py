@@ -398,3 +398,27 @@ def carga_equipamientos_suelo() -> "pd.DataFrame | None":
 def carga_salud_ambiente() -> "pd.DataFrame | None":
     """Carga los indicadores de salud, educación, conectividad y medio ambiente."""
     return _lee_csv_procesado(ARCHIVO_SALUD_AMBIENTE)
+
+
+
+ARCHIVO_GEOJSON_EDIFICIOS = "edificios_andorra.geojson"
+
+
+@st.cache_data
+def carga_geojson_edificios() -> "dict | None":
+    """Carga el GeoJSON de edificios catastrados (edificios_andorra.geojson)."""
+    ruta = DIR_CRUDOS / ARCHIVO_GEOJSON_EDIFICIOS
+    if not ruta.exists():
+        print(
+            f"[carga_datos] Dato no disponible: no se encontró el archivo "
+            f"geoespacial de edificios '{ruta}'."
+        )
+        return None
+    try:
+        with open(ruta, encoding="utf-8") as archivo:
+            return json.load(archivo)
+    except Exception as error:  # noqa: BLE001
+        print(
+            f"[carga_datos] Dato no disponible: no se pudo leer '{ruta}': {error}."
+        )
+        return None

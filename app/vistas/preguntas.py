@@ -375,6 +375,9 @@ def _respuesta_inversiones(inventario) -> "dict | None":
 
 def _respuesta_poble(inventario) -> "dict | None":
     """Construye la respuesta a "¿cuál es el pueblo (poble) más poblado?"."""
+    if not hasattr(carga_datos, "carga_poblacion_poble"):
+        import importlib
+        importlib.reload(carga_datos)
     pobles = carga_datos.carga_poblacion_poble()
     if _es_dataframe_vacio(pobles):
         return None
