@@ -33,6 +33,9 @@ MARCA_INCOMPLETA = "INCOMPLETA: "
 # Licencias tal como deben copiarse de forma literal. Si una fuente no tiene texto
 # literal disponible, su valor es None y la entrada se marcará como INCOMPLETA.
 LICENCIA_WORLDBANK = "CC BY 4.0"
+# OpenStreetMap publica sus datos bajo la Open Database License (ODbL), con
+# texto literal verificado y atribución a los colaboradores de OSM.
+LICENCIA_OSM = "ODbL (OpenStreetMap contributors)"
 # El Departament d'Estadística d'Andorra no publica un texto de licencia literal
 # verificado en el proyecto, así que se deja sin texto literal (se marca INCOMPLETA).
 LICENCIA_ESTADISTICA = None
@@ -195,6 +198,140 @@ def _campos_economia():
     ]
 
 
+def _gob(arch, preg):
+    """Devuelve las 4 filas de gobernanza comunes (fuente/vigencia/fecha/linaje)."""
+    return [
+        [arch, "fuente", "(anotado)", "Origen oficial del dato",
+         "Texto", "texto", "Departament d'Estadística d'Andorra", "No", "Texto de la fuente", CLAS,
+         "Se anota en el procesamiento (gobernanza)", preg],
+        [arch, "vigencia", "(anotado)", "Periodo/año al que corresponde la cifra",
+         "Texto", "año", "2024", "No", "Año o periodo", CLAS,
+         "Se anota como el periodo del propio registro", preg],
+        [arch, "fecha_prueba", "(anotado)", "Fecha real en que se verificó/procesó el dato",
+         "Fecha", "AAAA-MM-DD", "2026-11-02", "No", "Fecha ISO", CLAS,
+         "Se anota en el procesamiento con la fecha real de ejecución", preg],
+        [arch, "linaje", "(anotado)", "Clasificación de gobernanza del dato",
+         "Texto", "etiqueta", "OBSERVADO", "No", "OBSERVADO / ESTIMADO / PROXY", CLAS,
+         "Se etiqueta según el origen del dato", preg],
+    ]
+
+
+def _campos_poble():
+    arch = "datos_procesados/poblacion_poble.csv"
+    preg = "¿Cuánta gente vive en cada poble (localidad) y cómo evoluciona?"
+    return [
+        [arch, "poble", "Descripció", "Poble (localidad) de Andorra",
+         "Texto", "nombre", "Aldosa", "No", "Nombre del poble", CLAS,
+         "Se extrae del crudo de población por poble (id1096)", preg],
+        [arch, "parroquia", "(derivado)", "Parròquia a la que pertenece el poble",
+         "Texto", "nombre", "Canillo", "No", "Una de las 7 parròquies", CLAS,
+         "Se asigna el nombre canónico de la parròquia", preg],
+        [arch, "anio", "(año en cabecera)", "Año al que corresponde la población del poble",
+         "Entero", "año", "2020", "No", "2020 a 2025", CLAS,
+         "Transformación ancho→largo: cada columna de año pasa a fila", preg],
+        [arch, "poblacion", "(valor de la celda)", "Número de habitantes del poble en el año",
+         "Entero", "personas", "189", "No", "≥ 0", CLAS,
+         "Se valida que sea entero no negativo", preg],
+    ] + _gob(arch, preg)
+
+
+def _campos_cruces_sexo():
+    arch = "datos_procesados/poblacion_cruces_sexo.csv"
+    preg = "¿Cómo se cruza la población por sexo con la edad, nacionalidad y origen?"
+    return [
+        [arch, "dimension", "(derivado)", "Cruce de sexo con otra dimensión",
+         "Texto", "etiqueta", "sexo_edad_5", "No", "sexo_edad_5 / sexo_nacionalidad / sexo_lugar_nacimiento", CLAS,
+         "Se asigna según el crudo de cruce procesado (id1098/1104/1138)", preg],
+        [arch, "sexo", "Descripció", "Sexo del cruce",
+         "Texto", "etiqueta", "HOME", "No", "HOME / DONA", CLAS,
+         "Se extrae del patrón de la descripción del crudo", preg],
+        [arch, "categoria", "Descripció", "Categoría de la otra dimensión (edad, nacionalidad u origen)",
+         "Texto", "etiqueta", "00-04 ANYS", "No", "Depende de la dimensión", CLAS,
+         "Se extrae del patrón de la descripción del crudo", preg],
+        [arch, "anio", "(año en cabecera)", "Año al que corresponde el cruce",
+         "Entero", "año", "2020", "No", "2020 a 2025", CLAS,
+         "Transformación ancho→largo: cada columna de año pasa a fila", preg],
+        [arch, "valor", "(valor de la celda)", "Número de personas del cruce",
+         "Entero", "personas", "1315", "No", "≥ 0", CLAS,
+         "Se valida que sea entero no negativo", preg],
+    ] + _gob(arch, preg)
+
+
+def _campos_edificios_suelo():
+    arch = "datos_procesados/edificios_suelo.csv"
+    preg = "¿Cómo es la morfología de edificación del territorio (usos y alturas)?"
+    return [
+        [arch, "uso_suelo", "(derivado de OSM)", "Uso del suelo / categoría de la huella edificada",
+         "Texto", "texto", "Huella edificada general", "No", "Texto del uso", CLAS,
+         "Se agrupa a partir de las etiquetas de edificio de OpenStreetMap", preg],
+        [arch, "categoria_osm", "building/amenity (OSM)", "Categoría original de OpenStreetMap",
+         "Texto", "texto", "Edificación sin uso específico", "No", "Texto de la categoría OSM", CLAS,
+         "Se toma de las etiquetas del edificio en OSM", preg],
+        [arch, "num_edificios", "(conteo)", "Número de edificios de esa categoría",
+         "Entero", "edificios", "949", "No", "≥ 0", CLAS,
+         "Se cuenta el número de polígonos de edificio por categoría", preg],
+        [arch, "con_pisos_declarados", "(conteo)", "Edificios con número de plantas declarado en OSM",
+         "Entero", "edificios", "133", "No", "≥ 0", CLAS,
+         "Se cuentan los edificios con la etiqueta de plantas (building:levels)", preg],
+        [arch, "pisos_medios", "(cálculo)", "Media de plantas de los edificios con dato",
+         "Decimal", "plantas", "4.97", "Sí", "≥ 0", CLAS,
+         "Media de building:levels entre los edificios que lo declaran", preg],
+        [arch, "pisos_maximos", "(cálculo)", "Máximo de plantas declarado en la categoría",
+         "Entero", "plantas", "9", "Sí", "≥ 0", CLAS,
+         "Máximo de building:levels en la categoría", preg],
+    ] + _gob(arch, preg)
+
+
+def _campos_equipamientos():
+    arch = "datos_procesados/equipamientos_suelo.csv"
+    preg = "¿Qué equipamientos y servicios hay en cada parròquia y dónde están?"
+    return [
+        [arch, "parroquia", "(derivado)", "Parròquia donde se ubica el equipamiento",
+         "Texto", "nombre", "Andorra la Vella", "No", "Una de las 7 parròquies", CLAS,
+         "Se asigna por la ubicación del punto OSM", preg],
+        [arch, "dominio", "(derivado)", "Dominio temático del equipamiento",
+         "Texto", "texto", "Turismo y servicios", "No", "Texto del dominio", CLAS,
+         "Se agrupa el tipo de equipamiento en un dominio temático", preg],
+        [arch, "tipo_equipamiento", "amenity/tourism (OSM)", "Tipo de equipamiento o servicio",
+         "Texto", "texto", "Hotel / alojamiento", "No", "Texto del tipo", CLAS,
+         "Se deriva de las etiquetas de OpenStreetMap", preg],
+        [arch, "nombre", "name (OSM)", "Nombre público del equipamiento (no es un dato de personas)",
+         "Texto", "texto", "Hôtel Mercure Andorra", "Sí", "Texto del nombre", CLAS,
+         "Se toma el nombre público del punto en OSM (establecimiento, no persona)", preg],
+        [arch, "lat", "(OSM)", "Latitud del equipamiento",
+         "Decimal", "grados", "42.50792", "No", "Coordenada WGS84", CLAS,
+         "Coordenada del punto público en OSM", preg],
+        [arch, "lon", "(OSM)", "Longitud del equipamiento",
+         "Decimal", "grados", "1.527106", "No", "Coordenada WGS84", CLAS,
+         "Coordenada del punto público en OSM", preg],
+    ] + _gob(arch, preg)
+
+
+def _campos_salud_educacion():
+    arch = "datos_procesados/salud_educacion_ambiente.csv"
+    preg = "¿Cómo están la salud, la educación y el ambiente en Andorra?"
+    return [
+        [arch, "dominio", "(derivado)", "Dominio del indicador (salud, educación o ambiente)",
+         "Texto", "texto", "salud", "No", "salud / educacion / ambiente", CLAS,
+         "Se asigna según el indicador del Banco Mundial", preg],
+        [arch, "indicador", "indicator.value (WB)", "Nombre del indicador",
+         "Texto", "texto", "Esperanza de vida al nacer", "No", "Texto del indicador", CLAS,
+         "Se toma del catálogo de indicadores del Banco Mundial", preg],
+        [arch, "codigo", "(código WB)", "Código del indicador en la API del Banco Mundial",
+         "Texto", "código", "SP.DYN.LE00.IN", "No", "Código WB", CLAS,
+         "Se toma del nombre del JSON descargado", preg],
+        [arch, "anio", "date (WB)", "Año de la observación",
+         "Entero", "año", "2024", "No", "Año", CLAS,
+         "Se toma del campo 'date' de la observación", preg],
+        [arch, "valor", "value (WB)", "Valor del indicador en ese año",
+         "Decimal", "según indicador", "84.188", "Sí", "Depende del indicador", CLAS,
+         "Se omiten las observaciones con valor nulo (no se inventan)", preg],
+        [arch, "unidad", "(catálogo WB)", "Unidad de medida del indicador",
+         "Texto", "texto", "años", "No", "Texto de la unidad", CLAS,
+         "Se toma del catálogo de indicadores del Banco Mundial", preg],
+    ] + _gob(arch, preg)
+
+
 def _campos_turismo():
     arch = "datos_procesados/turismo.csv"
     return [
@@ -293,6 +430,12 @@ FUENTES_NUEVAS = [
     ("F12", "tasa_fecundidad.csv", LICENCIA_ESTADISTICA, _campos_fecundidad),
     ("F13", "economia_worldbank.csv", LICENCIA_WORLDBANK, _campos_economia),
     ("F14", "salario_sector.csv", LICENCIA_ESTADISTICA, _campos_empleo),
+    # Fuentes nuevas de la ultima parte (territorio/pueblos, suelo y bienestar).
+    ("F15", "poblacion_poble.csv", LICENCIA_ESTADISTICA, _campos_poble),
+    ("F16", "poblacion_cruces_sexo.csv", LICENCIA_ESTADISTICA, _campos_cruces_sexo),
+    ("F17", "edificios_suelo.csv", LICENCIA_OSM, _campos_edificios_suelo),
+    ("F18", "equipamientos_suelo.csv", LICENCIA_OSM, _campos_equipamientos),
+    ("F19", "salud_educacion_ambiente.csv", LICENCIA_WORLDBANK, _campos_salud_educacion),
 ]
 
 # ID_Fuente que gestiona este script. Se eliminan sus filas previas antes de
@@ -301,7 +444,10 @@ FUENTES_NUEVAS = [
 # inversiones quedaron con esos ID en una version anterior del diccionario, pero
 # en el inventario son F03/F04): al estar aqui, sus filas antiguas se eliminan y
 # se reescriben con el ID correcto, alineando diccionario e inventario.
-IDS_GESTIONADOS = {"F03", "F04", "F10", "F11", "F12", "F13", "F14", "F30", "F31"}
+IDS_GESTIONADOS = {
+    "F03", "F04", "F10", "F11", "F12", "F13", "F14",
+    "F15", "F16", "F17", "F18", "F19", "F30", "F31",
+}
 
 
 def _ultima_fila_con_datos(ws):
