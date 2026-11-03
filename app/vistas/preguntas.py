@@ -373,6 +373,113 @@ def _respuesta_inversiones(inventario) -> "dict | None":
     }
 
 
+def _respuesta_poble(inventario) -> "dict | None":
+    """Construye la respuesta a "¿cuál es el pueblo (poble) más poblado?"."""
+    pobles = carga_datos.carga_poblacion_poble()
+    if _es_dataframe_vacio(pobles):
+        return None
+    anios = pd.to_numeric(pobles.get("anio"), errors="coerce").dropna()
+    if anios.empty:
+        return None
+    anio_max = int(anios.max())
+    sub = pobles[pd.to_numeric(pobles["anio"], errors="coerce") == anio_max].copy()
+    sub["poblacion"] = pd.to_numeric(sub.get("poblacion"), errors="coerce")
+    sub = sub.dropna(subset=["poblacion"]).sort_values("poblacion", ascending=False)
+    if sub.empty:
+        return None
+    top = sub.iloc[0]
+    return {
+        "pregunta": "¿Cuál es el pueblo (poble) más poblado de Andorra?",
+        "etiqueta": f"{top['poble']} ({top['parroquia']}) en {anio_max}",
+        "valor": f"{int(top['poblacion']):,}".replace(",", "."),
+        "metadato": _metadato_desde_fila(top, str(anio_max)),
+        "linaje": top.get("linaje"),
+        "id_fuente": _id_fuente_por_nombre(inventario, "poblacion_poble", "1096"),
+        "nota": (
+            f"Entre los {len(sub)} pueblos (pobles) oficiales de Andorra, "
+            f"{top['poble']} concentra la mayor población en {anio_max}."
+        ),
+    }
+
+
+def _respuesta_salud_esperanza(inventario) -> "dict | None":
+    """Construye la respuesta a "¿cuál es la esperanza de vida y el estado de salud?"."""
+    df = carga_datos.carga_salud_ambiente()
+    if _es_dataframe_vacio(df):
+        return None
+    sub = df[df["codigo"].isin(["SP.DYN.LE00.IN", "SH.XPD.CHEX.GD.ZS"])].copy()
+    if sub.empty:
+        return None
+    sub["anio"] = pd.to_numeric(sub.get("anio"), errors="coerce")
+    sub["valor"] = pd.to_numeric(sub.get("valor"), errors="coerce")
+    sub = sub.dropna(subset=["anio", "valor"]).sort_values("anio")
+    if sub.empty:
+        return None
+    fila = sub.iloc[-1]
+    anio_max = int(fila["anio"])
+    unidad = str(fila.get("unidad", "")).strip()
+    return {
+        "pregunta": "¿Cómo están los indicadores de salud en Andorra?",
+        "etiqueta": f"{fila['indicador']} ({anio_max})",
+        "valor": f"{float(fila['valor']):.2f} {unidad}".strip(),
+        "metadato": _metadato_desde_fila(fila, str(anio_max)),
+        "linaje": fila.get("linaje"),
+        "id_fuente": _id_fuente_por_nombre(inventario, "salud_educacion_ambiente"),
+        "nota": "Indicador oficial de salud publicado por el Banco Mundial para Andorra.",
+    }
+
+
+def _respuesta_energia_bosques(inventario) -> "dict | None":
+    """Construye la respuesta sobre energía renovable y bosques en Andorra."""
+    df = carga_datos.carga_salud_ambiente()
+    if _es_dataframe_vacio(df):
+        return None
+    sub = df[df["dominio"] == "energia_ambiente"].copy()
+    if sub.empty:
+        return None
+    sub["anio"] = pd.to_numeric(sub.get("anio"), errors="coerce")
+    sub["valor"] = pd.to_numeric(sub.get("valor"), errors="coerce")
+    sub = sub.dropna(subset=["anio", "valor"]).sort_values("anio")
+    if sub.empty:
+        return None
+    fila = sub.iloc[-1]
+    anio_max = int(fila["anio"])
+    unidad = str(fila.get("unidad", "")).strip()
+    return {
+        "pregunta": "¿Cómo está Andorra en energía renovable, bosques y medio ambiente?",
+        "etiqueta": f"{fila['indicador']} ({anio_max})",
+        "valor": f"{float(fila['valor']):.2f} {unidad}".strip(),
+        "metadato": _metadato_desde_fila(fila, str(anio_max)),
+        "linaje": fila.get("linaje"),
+        "id_fuente": _id_fuente_por_nombre(inventario, "salud_educacion_ambiente"),
+        "nota": "Ver serie completa de energía renovable, bosques y CO2 en «Transporte y ambiente».",
+    }
+
+
+def _respuesta_suelo_edificios(inventario) -> "dict | None":
+    """Construye la respuesta a "¿qué hay construido en el suelo?"."""
+    edif = carga_datos.carga_edificios_suelo()
+    if _es_dataframe_vacio(edif):
+        return None
+    nums = pd.to_numeric(edif.get("num_edificios"), errors="coerce").dropna()
+    if nums.empty:
+        return None
+    total = int(nums.sum())
+    fila = edif.iloc[0]
+    return {
+        "pregunta": "¿Qué hay construido en el suelo y qué equipamientos existen?",
+        "etiqueta": f"Polígonos de edificios catastrados ({fila.get('vigencia')})",
+        "valor": f"{total:,}".replace(",", "."),
+        "metadato": _metadato_desde_fila(fila, str(fila.get("vigencia", "2026"))),
+        "linaje": fila.get("linaje"),
+        "id_fuente": _id_fuente_por_nombre(inventario, "edificios_suelo"),
+        "nota": (
+            "Huella edificada clasificada por tipología constructiva, número de "
+            "plantas y nodos de transporte, salud y educación (OpenStreetMap, ODbL)."
+        ),
+    }
+
+
 def _evalua_preguntas(inventario) -> "tuple[list, list]":
     """Clasifica las Pregunta_Usuario en respondidas y pendientes."""
     candidatas = [
@@ -408,6 +515,26 @@ def _evalua_preguntas(inventario) -> "tuple[list, list]":
             _respuesta_inversiones,
             "No hay datos procesados de inversiones inmobiliarias disponibles "
             "en este momento.",
+        ),
+        (
+            "¿Cuál es el pueblo (poble) más poblado de Andorra?",
+            _respuesta_poble,
+            "No hay datos procesados de población por poble disponibles.",
+        ),
+        (
+            "¿Cómo están los indicadores de salud en Andorra?",
+            _respuesta_salud_esperanza,
+            "No hay datos procesados de salud disponibles en este momento.",
+        ),
+        (
+            "¿Cómo está Andorra en energía renovable, bosques y medio ambiente?",
+            _respuesta_energia_bosques,
+            "No hay datos procesados de energía y medio ambiente disponibles.",
+        ),
+        (
+            "¿Qué hay construido en el suelo y qué equipamientos existen?",
+            _respuesta_suelo_edificios,
+            "No hay datos procesados de edificios y suelo disponibles.",
         ),
     ]
 

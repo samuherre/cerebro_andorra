@@ -1,0 +1,24 @@
+uso_suelo;categoria_osm;num_edificios;con_pisos_declarados;pisos_medios;pisos_maximos;fuente;vigencia;fecha_prueba;linaje
+Huella edificada general;Edificación sin uso específico;949;133;4.97;9;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Auxiliar y equipamiento menor;Cobertizos / anexos;43;1;2.0;2;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Residencial plurifamiliar;Apartamentos;31;10;5.9;7;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Residencial plurifamiliar;Residencial;19;13;4.23;5;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Residencial unifamiliar;Casas;18;3;2.0;2;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Industria y logística;Naves industriales;17;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Turismo y hostelería;Hoteles;12;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Industria y logística;Almacenes;10;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Auxiliar y equipamiento menor;Cubiertas;7;1;1.0;1;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Educación y cultura;Colegios;7;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Comercio y oficinas;Locales minoristas;5;1;2.0;2;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Educación y cultura;Centros de educación superior;5;3;2.0;3;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Comercio y oficinas;Edificios comerciales;4;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Residencial unifamiliar;Vivienda aislada;4;2;1.5;2;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Servicios e infraestructura;Edificios de servicio;2;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Industria y logística;Hangares;2;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Residencial unifamiliar;Adosados;2;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Patrimonio y culto;Ruinas históricas;2;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Patrimonio y culto;Capillas / templos;1;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Comercio y oficinas;Oficinas;1;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Transporte y movilidad;Infraestructura de transporte;1;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+Deporte y recreación;Graderíos / recintos deportivos;1;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO
+En desarrollo;En construcción;1;0;0.0;0;OpenStreetMap vía Overpass API (ODbL);2026;2026-11-02;OBSERVADO

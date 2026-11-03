@@ -31,12 +31,16 @@ import datetime
 import sys
 
 import genera_inventario
+import procesa_cruces_demograficos
 import procesa_economia
+import procesa_edificios_suelo
 import procesa_empleo
 import procesa_indicadores_sociales
 import procesa_inversiones
 import procesa_poblacion
 import procesa_poblacion_desgloses
+import procesa_pobles
+import procesa_salud_ambiente
 import procesa_turismo
 import procesa_vivienda
 
@@ -71,6 +75,10 @@ def main() -> int:
         ("Procesamiento de indicadores sociales", procesa_indicadores_sociales.procesa),
         ("Procesamiento de economía (World Bank)", procesa_economia.procesa),
         ("Procesamiento de salario por sector", procesa_empleo.procesa),
+        ("Procesamiento de población por poble (44 localidades)", procesa_pobles.procesa),
+        ("Procesamiento de cruces demográficos por sexo", procesa_cruces_demograficos.procesa),
+        ("Procesamiento de edificios y equipamiento del suelo", procesa_edificios_suelo.procesa),
+        ("Procesamiento de salud, educación y medio ambiente", procesa_salud_ambiente.procesa),
         ("Generación del inventario de fuentes", genera_inventario.procesa),
     ]
 

@@ -1,0 +1,104 @@
+dominio;indicador;codigo;anio;valor;unidad;fuente;vigencia;fecha_prueba;linaje
+salud;Esperanza de vida al nacer;SP.DYN.LE00.IN;2024;84.188;años;Banco Mundial (World Bank Open Data, API v2);2024;2026-11-02;OBSERVADO
+salud;Esperanza de vida al nacer;SP.DYN.LE00.IN;2023;84.041;años;Banco Mundial (World Bank Open Data, API v2);2023;2026-11-02;OBSERVADO
+salud;Esperanza de vida al nacer;SP.DYN.LE00.IN;2022;84.016;años;Banco Mundial (World Bank Open Data, API v2);2022;2026-11-02;OBSERVADO
+salud;Esperanza de vida al nacer;SP.DYN.LE00.IN;2021;82.331;años;Banco Mundial (World Bank Open Data, API v2);2021;2026-11-02;OBSERVADO
+salud;Esperanza de vida al nacer;SP.DYN.LE00.IN;2020;79.418;años;Banco Mundial (World Bank Open Data, API v2);2020;2026-11-02;OBSERVADO
+salud;Esperanza de vida al nacer;SP.DYN.LE00.IN;2019;84.098;años;Banco Mundial (World Bank Open Data, API v2);2019;2026-11-02;OBSERVADO
+salud;Esperanza de vida al nacer;SP.DYN.LE00.IN;2018;84.242;años;Banco Mundial (World Bank Open Data, API v2);2018;2026-11-02;OBSERVADO
+salud;Esperanza de vida al nacer;SP.DYN.LE00.IN;2017;84.359;años;Banco Mundial (World Bank Open Data, API v2);2017;2026-11-02;OBSERVADO
+salud;Esperanza de vida al nacer;SP.DYN.LE00.IN;2016;84.489;años;Banco Mundial (World Bank Open Data, API v2);2016;2026-11-02;OBSERVADO
+salud;Esperanza de vida al nacer;SP.DYN.LE00.IN;2015;84.532;años;Banco Mundial (World Bank Open Data, API v2);2015;2026-11-02;OBSERVADO
+salud;Gasto corriente en salud (% del PIB);SH.XPD.CHEX.GD.ZS;2023;7.6993;% del PIB;Banco Mundial (World Bank Open Data, API v2);2023;2026-11-02;OBSERVADO
+salud;Gasto corriente en salud (% del PIB);SH.XPD.CHEX.GD.ZS;2022;7.5214;% del PIB;Banco Mundial (World Bank Open Data, API v2);2022;2026-11-02;OBSERVADO
+salud;Gasto corriente en salud (% del PIB);SH.XPD.CHEX.GD.ZS;2021;8.6467;% del PIB;Banco Mundial (World Bank Open Data, API v2);2021;2026-11-02;OBSERVADO
+salud;Gasto corriente en salud (% del PIB);SH.XPD.CHEX.GD.ZS;2020;8.7846;% del PIB;Banco Mundial (World Bank Open Data, API v2);2020;2026-11-02;OBSERVADO
+salud;Gasto corriente en salud (% del PIB);SH.XPD.CHEX.GD.ZS;2019;7.3224;% del PIB;Banco Mundial (World Bank Open Data, API v2);2019;2026-11-02;OBSERVADO
+salud;Gasto corriente en salud (% del PIB);SH.XPD.CHEX.GD.ZS;2018;7.3778;% del PIB;Banco Mundial (World Bank Open Data, API v2);2018;2026-11-02;OBSERVADO
+salud;Gasto corriente en salud (% del PIB);SH.XPD.CHEX.GD.ZS;2017;7.0716;% del PIB;Banco Mundial (World Bank Open Data, API v2);2017;2026-11-02;OBSERVADO
+salud;Gasto corriente en salud (% del PIB);SH.XPD.CHEX.GD.ZS;2016;6.9416;% del PIB;Banco Mundial (World Bank Open Data, API v2);2016;2026-11-02;OBSERVADO
+salud;Gasto corriente en salud (% del PIB);SH.XPD.CHEX.GD.ZS;2015;6.9137;% del PIB;Banco Mundial (World Bank Open Data, API v2);2015;2026-11-02;OBSERVADO
+salud;Gasto en salud per cápita;SH.XPD.CHEX.PC.CD;2023;3605.198;US$;Banco Mundial (World Bank Open Data, API v2);2023;2026-11-02;OBSERVADO
+salud;Gasto en salud per cápita;SH.XPD.CHEX.PC.CD;2022;3190.1133;US$;Banco Mundial (World Bank Open Data, API v2);2022;2026-11-02;OBSERVADO
+salud;Gasto en salud per cápita;SH.XPD.CHEX.PC.CD;2021;3668.4475;US$;Banco Mundial (World Bank Open Data, API v2);2021;2026-11-02;OBSERVADO
+salud;Gasto en salud per cápita;SH.XPD.CHEX.PC.CD;2020;3282.0259;US$;Banco Mundial (World Bank Open Data, API v2);2020;2026-11-02;OBSERVADO
+salud;Gasto en salud per cápita;SH.XPD.CHEX.PC.CD;2019;3021.0781;US$;Banco Mundial (World Bank Open Data, API v2);2019;2026-11-02;OBSERVADO
+salud;Gasto en salud per cápita;SH.XPD.CHEX.PC.CD;2018;3159.1616;US$;Banco Mundial (World Bank Open Data, API v2);2018;2026-11-02;OBSERVADO
+salud;Gasto en salud per cápita;SH.XPD.CHEX.PC.CD;2017;2876.2419;US$;Banco Mundial (World Bank Open Data, API v2);2017;2026-11-02;OBSERVADO
+salud;Gasto en salud per cápita;SH.XPD.CHEX.PC.CD;2016;2785.646;US$;Banco Mundial (World Bank Open Data, API v2);2016;2026-11-02;OBSERVADO
+salud;Gasto en salud per cápita;SH.XPD.CHEX.PC.CD;2015;2672.4973;US$;Banco Mundial (World Bank Open Data, API v2);2015;2026-11-02;OBSERVADO
+salud;Mortalidad infantil;SP.DYN.IMRT.IN;2024;2.4;por 1.000 nacidos vivos;Banco Mundial (World Bank Open Data, API v2);2024;2026-11-02;OBSERVADO
+salud;Mortalidad infantil;SP.DYN.IMRT.IN;2023;2.5;por 1.000 nacidos vivos;Banco Mundial (World Bank Open Data, API v2);2023;2026-11-02;OBSERVADO
+salud;Mortalidad infantil;SP.DYN.IMRT.IN;2022;2.6;por 1.000 nacidos vivos;Banco Mundial (World Bank Open Data, API v2);2022;2026-11-02;OBSERVADO
+salud;Mortalidad infantil;SP.DYN.IMRT.IN;2021;2.7;por 1.000 nacidos vivos;Banco Mundial (World Bank Open Data, API v2);2021;2026-11-02;OBSERVADO
+salud;Mortalidad infantil;SP.DYN.IMRT.IN;2020;2.8;por 1.000 nacidos vivos;Banco Mundial (World Bank Open Data, API v2);2020;2026-11-02;OBSERVADO
+salud;Mortalidad infantil;SP.DYN.IMRT.IN;2019;2.9;por 1.000 nacidos vivos;Banco Mundial (World Bank Open Data, API v2);2019;2026-11-02;OBSERVADO
+salud;Mortalidad infantil;SP.DYN.IMRT.IN;2018;3.0;por 1.000 nacidos vivos;Banco Mundial (World Bank Open Data, API v2);2018;2026-11-02;OBSERVADO
+salud;Mortalidad infantil;SP.DYN.IMRT.IN;2017;3.1;por 1.000 nacidos vivos;Banco Mundial (World Bank Open Data, API v2);2017;2026-11-02;OBSERVADO
+salud;Mortalidad infantil;SP.DYN.IMRT.IN;2016;3.2;por 1.000 nacidos vivos;Banco Mundial (World Bank Open Data, API v2);2016;2026-11-02;OBSERVADO
+salud;Mortalidad infantil;SP.DYN.IMRT.IN;2015;3.3;por 1.000 nacidos vivos;Banco Mundial (World Bank Open Data, API v2);2015;2026-11-02;OBSERVADO
+salud;Médicos por cada 1.000 habitantes;SH.MED.PHYS.ZS;2023;5.068;por 1.000 hab.;Banco Mundial (World Bank Open Data, API v2);2023;2026-11-02;OBSERVADO
+salud;Médicos por cada 1.000 habitantes;SH.MED.PHYS.ZS;2022;5.157;por 1.000 hab.;Banco Mundial (World Bank Open Data, API v2);2022;2026-11-02;OBSERVADO
+salud;Médicos por cada 1.000 habitantes;SH.MED.PHYS.ZS;2021;4.758;por 1.000 hab.;Banco Mundial (World Bank Open Data, API v2);2021;2026-11-02;OBSERVADO
+salud;Médicos por cada 1.000 habitantes;SH.MED.PHYS.ZS;2020;4.587;por 1.000 hab.;Banco Mundial (World Bank Open Data, API v2);2020;2026-11-02;OBSERVADO
+salud;Médicos por cada 1.000 habitantes;SH.MED.PHYS.ZS;2019;4.392;por 1.000 hab.;Banco Mundial (World Bank Open Data, API v2);2019;2026-11-02;OBSERVADO
+salud;Médicos por cada 1.000 habitantes;SH.MED.PHYS.ZS;2018;4.535;por 1.000 hab.;Banco Mundial (World Bank Open Data, API v2);2018;2026-11-02;OBSERVADO
+salud;Médicos por cada 1.000 habitantes;SH.MED.PHYS.ZS;2017;4.119;por 1.000 hab.;Banco Mundial (World Bank Open Data, API v2);2017;2026-11-02;OBSERVADO
+salud;Médicos por cada 1.000 habitantes;SH.MED.PHYS.ZS;2016;4.058;por 1.000 hab.;Banco Mundial (World Bank Open Data, API v2);2016;2026-11-02;OBSERVADO
+salud;Médicos por cada 1.000 habitantes;SH.MED.PHYS.ZS;2015;3.754;por 1.000 hab.;Banco Mundial (World Bank Open Data, API v2);2015;2026-11-02;OBSERVADO
+educacion_conectividad;Usuarios de Internet (% de la población);IT.NET.USER.ZS;2024;94.3976;% de la población;Banco Mundial (World Bank Open Data, API v2);2024;2026-11-02;OBSERVADO
+educacion_conectividad;Usuarios de Internet (% de la población);IT.NET.USER.ZS;2023;94.215;% de la población;Banco Mundial (World Bank Open Data, API v2);2023;2026-11-02;OBSERVADO
+educacion_conectividad;Usuarios de Internet (% de la población);IT.NET.USER.ZS;2022;94.0517;% de la población;Banco Mundial (World Bank Open Data, API v2);2022;2026-11-02;OBSERVADO
+educacion_conectividad;Usuarios de Internet (% de la población);IT.NET.USER.ZS;2021;93.8975;% de la población;Banco Mundial (World Bank Open Data, API v2);2021;2026-11-02;OBSERVADO
+educacion_conectividad;Usuarios de Internet (% de la población);IT.NET.USER.ZS;2020;93.2057;% de la población;Banco Mundial (World Bank Open Data, API v2);2020;2026-11-02;OBSERVADO
+educacion_conectividad;Usuarios de Internet (% de la población);IT.NET.USER.ZS;2019;90.7187;% de la población;Banco Mundial (World Bank Open Data, API v2);2019;2026-11-02;OBSERVADO
+educacion_conectividad;Usuarios de Internet (% de la población);IT.NET.USER.ZS;2018;93.5;% de la población;Banco Mundial (World Bank Open Data, API v2);2018;2026-11-02;OBSERVADO
+educacion_conectividad;Usuarios de Internet (% de la población);IT.NET.USER.ZS;2017;91.5675;% de la población;Banco Mundial (World Bank Open Data, API v2);2017;2026-11-02;OBSERVADO
+educacion_conectividad;Usuarios de Internet (% de la población);IT.NET.USER.ZS;2016;89.7;% de la población;Banco Mundial (World Bank Open Data, API v2);2016;2026-11-02;OBSERVADO
+educacion_conectividad;Usuarios de Internet (% de la población);IT.NET.USER.ZS;2015;87.9;% de la población;Banco Mundial (World Bank Open Data, API v2);2015;2026-11-02;OBSERVADO
+educacion_conectividad;Gasto público en educación (% del PIB);SE.XPD.TOTL.GD.ZS;2023;1.8987;% del PIB;Banco Mundial (World Bank Open Data, API v2);2023;2026-11-02;OBSERVADO
+educacion_conectividad;Gasto público en educación (% del PIB);SE.XPD.TOTL.GD.ZS;2022;2.6473;% del PIB;Banco Mundial (World Bank Open Data, API v2);2022;2026-11-02;OBSERVADO
+educacion_conectividad;Gasto público en educación (% del PIB);SE.XPD.TOTL.GD.ZS;2021;2.3819;% del PIB;Banco Mundial (World Bank Open Data, API v2);2021;2026-11-02;OBSERVADO
+educacion_conectividad;Gasto público en educación (% del PIB);SE.XPD.TOTL.GD.ZS;2020;2.6321;% del PIB;Banco Mundial (World Bank Open Data, API v2);2020;2026-11-02;OBSERVADO
+educacion_conectividad;Gasto público en educación (% del PIB);SE.XPD.TOTL.GD.ZS;2019;3.1506;% del PIB;Banco Mundial (World Bank Open Data, API v2);2019;2026-11-02;OBSERVADO
+educacion_conectividad;Gasto público en educación (% del PIB);SE.XPD.TOTL.GD.ZS;2018;3.2467;% del PIB;Banco Mundial (World Bank Open Data, API v2);2018;2026-11-02;OBSERVADO
+educacion_conectividad;Gasto público en educación (% del PIB);SE.XPD.TOTL.GD.ZS;2017;3.2171;% del PIB;Banco Mundial (World Bank Open Data, API v2);2017;2026-11-02;OBSERVADO
+educacion_conectividad;Gasto público en educación (% del PIB);SE.XPD.TOTL.GD.ZS;2016;3.2371;% del PIB;Banco Mundial (World Bank Open Data, API v2);2016;2026-11-02;OBSERVADO
+educacion_conectividad;Gasto público en educación (% del PIB);SE.XPD.TOTL.GD.ZS;2015;3.2803;% del PIB;Banco Mundial (World Bank Open Data, API v2);2015;2026-11-02;OBSERVADO
+educacion_conectividad;Matriculación en educación secundaria;SE.SEC.ENRR;2024;101.9238;% bruto;Banco Mundial (World Bank Open Data, API v2);2024;2026-11-02;OBSERVADO
+educacion_conectividad;Matriculación en educación secundaria;SE.SEC.ENRR;2023;99.5087;% bruto;Banco Mundial (World Bank Open Data, API v2);2023;2026-11-02;OBSERVADO
+educacion_conectividad;Matriculación en educación secundaria;SE.SEC.ENRR;2022;98.5099;% bruto;Banco Mundial (World Bank Open Data, API v2);2022;2026-11-02;OBSERVADO
+educacion_conectividad;Matriculación en educación secundaria;SE.SEC.ENRR;2021;98.0404;% bruto;Banco Mundial (World Bank Open Data, API v2);2021;2026-11-02;OBSERVADO
+educacion_conectividad;Matriculación en educación secundaria;SE.SEC.ENRR;2020;97.15;% bruto;Banco Mundial (World Bank Open Data, API v2);2020;2026-11-02;OBSERVADO
+educacion_conectividad;Matriculación en educación secundaria;SE.SEC.ENRR;2019;96.2081;% bruto;Banco Mundial (World Bank Open Data, API v2);2019;2026-11-02;OBSERVADO
+educacion_conectividad;Matriculación en educación secundaria;SE.SEC.ENRR;2018;95.9804;% bruto;Banco Mundial (World Bank Open Data, API v2);2018;2026-11-02;OBSERVADO
+educacion_conectividad;Matriculación en educación secundaria;SE.SEC.ENRR;2017;95.109;% bruto;Banco Mundial (World Bank Open Data, API v2);2017;2026-11-02;OBSERVADO
+educacion_conectividad;Matriculación en educación secundaria;SE.SEC.ENRR;2016;94.6524;% bruto;Banco Mundial (World Bank Open Data, API v2);2016;2026-11-02;OBSERVADO
+educacion_conectividad;Matriculación en educación secundaria;SE.SEC.ENRR;2015;91.2962;% bruto;Banco Mundial (World Bank Open Data, API v2);2015;2026-11-02;OBSERVADO
+energia_ambiente;Superficie forestal (% del territorio);AG.LND.FRST.ZS;2024;38.9103;% del territorio;Banco Mundial (World Bank Open Data, API v2);2024;2026-11-02;OBSERVADO
+energia_ambiente;Superficie forestal (% del territorio);AG.LND.FRST.ZS;2023;38.8889;% del territorio;Banco Mundial (World Bank Open Data, API v2);2023;2026-11-02;OBSERVADO
+energia_ambiente;Superficie forestal (% del territorio);AG.LND.FRST.ZS;2022;38.8462;% del territorio;Banco Mundial (World Bank Open Data, API v2);2022;2026-11-02;OBSERVADO
+energia_ambiente;Superficie forestal (% del territorio);AG.LND.FRST.ZS;2021;38.6596;% del territorio;Banco Mundial (World Bank Open Data, API v2);2021;2026-11-02;OBSERVADO
+energia_ambiente;Superficie forestal (% del territorio);AG.LND.FRST.ZS;2020;38.6383;% del territorio;Banco Mundial (World Bank Open Data, API v2);2020;2026-11-02;OBSERVADO
+energia_ambiente;Superficie forestal (% del territorio);AG.LND.FRST.ZS;2019;38.7021;% del territorio;Banco Mundial (World Bank Open Data, API v2);2019;2026-11-02;OBSERVADO
+energia_ambiente;Superficie forestal (% del territorio);AG.LND.FRST.ZS;2018;38.7447;% del territorio;Banco Mundial (World Bank Open Data, API v2);2018;2026-11-02;OBSERVADO
+energia_ambiente;Superficie forestal (% del territorio);AG.LND.FRST.ZS;2017;38.8085;% del territorio;Banco Mundial (World Bank Open Data, API v2);2017;2026-11-02;OBSERVADO
+energia_ambiente;Superficie forestal (% del territorio);AG.LND.FRST.ZS;2016;38.8511;% del territorio;Banco Mundial (World Bank Open Data, API v2);2016;2026-11-02;OBSERVADO
+energia_ambiente;Superficie forestal (% del territorio);AG.LND.FRST.ZS;2015;38.9149;% del territorio;Banco Mundial (World Bank Open Data, API v2);2015;2026-11-02;OBSERVADO
+energia_ambiente;Consumo de energía renovable;EG.FEC.RNEW.ZS;2022;18.7;% del consumo total;Banco Mundial (World Bank Open Data, API v2);2022;2026-11-02;OBSERVADO
+energia_ambiente;Consumo de energía renovable;EG.FEC.RNEW.ZS;2021;18.4;% del consumo total;Banco Mundial (World Bank Open Data, API v2);2021;2026-11-02;OBSERVADO
+energia_ambiente;Consumo de energía renovable;EG.FEC.RNEW.ZS;2020;20.9;% del consumo total;Banco Mundial (World Bank Open Data, API v2);2020;2026-11-02;OBSERVADO
+energia_ambiente;Consumo de energía renovable;EG.FEC.RNEW.ZS;2019;17.2;% del consumo total;Banco Mundial (World Bank Open Data, API v2);2019;2026-11-02;OBSERVADO
+energia_ambiente;Consumo de energía renovable;EG.FEC.RNEW.ZS;2018;17.6;% del consumo total;Banco Mundial (World Bank Open Data, API v2);2018;2026-11-02;OBSERVADO
+energia_ambiente;Consumo de energía renovable;EG.FEC.RNEW.ZS;2017;18.0;% del consumo total;Banco Mundial (World Bank Open Data, API v2);2017;2026-11-02;OBSERVADO
+energia_ambiente;Consumo de energía renovable;EG.FEC.RNEW.ZS;2016;18.9;% del consumo total;Banco Mundial (World Bank Open Data, API v2);2016;2026-11-02;OBSERVADO
+energia_ambiente;Consumo de energía renovable;EG.FEC.RNEW.ZS;2015;19.0;% del consumo total;Banco Mundial (World Bank Open Data, API v2);2015;2026-11-02;OBSERVADO
+energia_ambiente;Exposición media a partículas PM2.5;EN.ATM.PM25.MC.M3;2023;8.883;µg/m³;Banco Mundial (World Bank Open Data, API v2);2023;2026-11-02;OBSERVADO
+energia_ambiente;Exposición media a partículas PM2.5;EN.ATM.PM25.MC.M3;2022;11.4677;µg/m³;Banco Mundial (World Bank Open Data, API v2);2022;2026-11-02;OBSERVADO
+energia_ambiente;Exposición media a partículas PM2.5;EN.ATM.PM25.MC.M3;2021;9.253;µg/m³;Banco Mundial (World Bank Open Data, API v2);2021;2026-11-02;OBSERVADO
+energia_ambiente;Exposición media a partículas PM2.5;EN.ATM.PM25.MC.M3;2020;8.507;µg/m³;Banco Mundial (World Bank Open Data, API v2);2020;2026-11-02;OBSERVADO
+energia_ambiente;Exposición media a partículas PM2.5;EN.ATM.PM25.MC.M3;2019;9.168;µg/m³;Banco Mundial (World Bank Open Data, API v2);2019;2026-11-02;OBSERVADO
+energia_ambiente;Exposición media a partículas PM2.5;EN.ATM.PM25.MC.M3;2018;9.3777;µg/m³;Banco Mundial (World Bank Open Data, API v2);2018;2026-11-02;OBSERVADO
+energia_ambiente;Exposición media a partículas PM2.5;EN.ATM.PM25.MC.M3;2017;9.7683;µg/m³;Banco Mundial (World Bank Open Data, API v2);2017;2026-11-02;OBSERVADO
+energia_ambiente;Exposición media a partículas PM2.5;EN.ATM.PM25.MC.M3;2016;8.2921;µg/m³;Banco Mundial (World Bank Open Data, API v2);2016;2026-11-02;OBSERVADO
+energia_ambiente;Exposición media a partículas PM2.5;EN.ATM.PM25.MC.M3;2015;10.5753;µg/m³;Banco Mundial (World Bank Open Data, API v2);2015;2026-11-02;OBSERVADO

@@ -490,6 +490,152 @@ def _bloque_social() -> None:
                 )
 
 
+def _bloque_cruces_sexo(anio: int) -> None:
+    st.subheader(f"Pirámide Demográfica Bilateral y Cruces por Sexo ({anio})")
+    st.caption(
+        "Cruce oficial de Sexo × Edad, Sexo × Nacionalidad y Sexo × Lugar de "
+        "nacimiento a escala nacional (linaje OBSERVADO, F16)."
+    )
+
+    cruces = carga_datos.carga_poblacion_cruces_sexo()
+    if cruces is None or cruces.empty:
+        st.info("Sin datos procesados de cruces por sexo.")
+        return
+
+    df_anio = cruces[pd.to_numeric(cruces["anio"], errors="coerce") == anio].copy()
+    if df_anio.empty:
+        st.info(f"Sin datos de cruces por sexo para {anio}.")
+        return
+
+    df_anio["valor"] = pd.to_numeric(df_anio["valor"], errors="coerce")
+    df_anio = df_anio.dropna(subset=["valor"])
+    go = _plotly()
+
+    # 1. Pirámide bilateral real (Hombres izquierda vs Mujeres derecha por edad)
+    edad_sexo = df_anio[df_anio["dimension"] == "sexo_edad_5"]
+    if not edad_sexo.empty and go is not None:
+        tramos = _ordena_tramos_edad(list(edad_sexo["categoria"].unique()))
+        hombres_map = {
+            str(r["categoria"]): int(r["valor"])
+            for _, r in edad_sexo[edad_sexo["sexo"] == "HOME"].iterrows()
+        }
+        mujeres_map = {
+            str(r["categoria"]): int(r["valor"])
+            for _, r in edad_sexo[edad_sexo["sexo"] == "DONA"].iterrows()
+        }
+        x_hombres = [-hombres_map.get(t, 0) for t in tramos]
+        c_hombres = [hombres_map.get(t, 0) for t in tramos]
+        x_mujeres = [mujeres_map.get(t, 0) for t in tramos]
+
+        fig_pir = go.Figure()
+        fig_pir.add_trace(
+            go.Bar(
+                y=tramos,
+                x=x_hombres,
+                orientation="h",
+                name="Hombres (HOME)",
+                marker_color=THEME_PLOTLY["primary"],
+                customdata=c_hombres,
+                hovertemplate="%{y}: %{customdata:,} hombres<extra></extra>",
+            )
+        )
+        fig_pir.add_trace(
+            go.Bar(
+                y=tramos,
+                x=x_mujeres,
+                orientation="h",
+                name="Mujeres (DONA)",
+                marker_color=THEME_PLOTLY["accent_female"],
+                hovertemplate="%{y}: %{x:,} mujeres<extra></extra>",
+            )
+        )
+        _aplicar_estilo_grafico(
+            fig_pir,
+            f"Pirámide Poblacional Bilateral de Andorra · {anio}",
+            "Hombres (Izquierda) · Mujeres (Derecha)",
+            "Tramo de edad",
+        )
+        fig_pir.update_layout(barmode="relative", height=480)
+        st.plotly_chart(fig_pir, use_container_width=True)
+
+    # 2. Sexo × Nacionalidad y Sexo × Lugar de Nacimiento
+    col_nac, col_lug = st.columns(2)
+    with col_nac:
+        nac_sexo = df_anio[df_anio["dimension"] == "sexo_nacionalidad"]
+        if not nac_sexo.empty and go is not None:
+            fig_ns = go.Figure()
+            for sx, color, etiq in (
+                ("HOME", THEME_PLOTLY["primary"], "Hombres"),
+                ("DONA", THEME_PLOTLY["accent_female"], "Mujeres"),
+            ):
+                sub_s = nac_sexo[nac_sexo["sexo"] == sx]
+                fig_ns.add_trace(
+                    go.Bar(
+                        x=sub_s["categoria"],
+                        y=sub_s["valor"],
+                        name=etiq,
+                        marker_color=color,
+                    )
+                )
+            _aplicar_estilo_grafico(
+                fig_ns,
+                f"Sexo × Nacionalidad · {anio}",
+                "Nacionalidad",
+                "Personas",
+            )
+            fig_ns.update_layout(barmode="group", height=360)
+            st.plotly_chart(fig_ns, use_container_width=True)
+
+    with col_lug:
+        lug_sexo = df_anio[df_anio["dimension"] == "sexo_lugar_nacimiento"]
+        if not lug_sexo.empty and go is not None:
+            fig_ls = go.Figure()
+            for sx, color, etiq in (
+                ("HOME", THEME_PLOTLY["primary"], "Hombres"),
+                ("DONA", THEME_PLOTLY["accent_female"], "Mujeres"),
+            ):
+                sub_s = lug_sexo[lug_sexo["sexo"] == sx]
+                fig_ls.add_trace(
+                    go.Bar(
+                        x=sub_s["categoria"],
+                        y=sub_s["valor"],
+                        name=etiq,
+                        marker_color=color,
+                    )
+                )
+            _aplicar_estilo_grafico(
+                fig_ls,
+                f"Sexo × Lugar de Nacimiento · {anio}",
+                "País de origen",
+                "Personas",
+            )
+            fig_ls.update_layout(barmode="group", height=360)
+            st.plotly_chart(fig_ls, use_container_width=True)
+
+    fila_ref = df_anio.iloc[0]
+    total_h = int(df_anio[(df_anio["dimension"] == "sexo_edad_5") & (df_anio["sexo"] == "HOME")]["valor"].sum())
+    total_m = int(df_anio[(df_anio["dimension"] == "sexo_edad_5") & (df_anio["sexo"] == "DONA")]["valor"].sum())
+    c1, c2 = st.columns(2)
+    with c1:
+        with st.container(border=True):
+            cifra_gobernada(
+                f"Total Hombres en Pirámide Nacional ({anio})",
+                f"{total_h:,}".replace(",", "."),
+                _construye_metadato(fila_ref),
+                _linaje_de_fila(fila_ref),
+                id_fuente="F16",
+            )
+    with c2:
+        with st.container(border=True):
+            cifra_gobernada(
+                f"Total Mujeres en Pirámide Nacional ({anio})",
+                f"{total_m:,}".replace(",", "."),
+                _construye_metadato(fila_ref),
+                _linaje_de_fila(fila_ref),
+                id_fuente="F16",
+            )
+
+
 # --- Función Principal (Render) --------------------------------------------
 
 
@@ -552,10 +698,11 @@ def render() -> None:
     st.markdown("---")
 
     # Organización en pestañas para limpiar el layout vertical
-    tab_totales, tab_desgloses, tab_social = st.tabs(
+    tab_totales, tab_desgloses, tab_cruces, tab_social = st.tabs(
         [
             " Totales por Parròquia",
             f" Desgloses ({parroquia_sel or 'General'})",
+            " Pirámide Bilateral y Cruces por Sexo",
             " Indicadores Sociales",
         ]
     )
@@ -572,6 +719,12 @@ def render() -> None:
             _composicion_nacionalidad(parroquia_sel, anio_sel)
             st.markdown("---")
             _distribucion_lugar_nacimiento(parroquia_sel, anio_sel)
+
+    with tab_cruces:
+        if desgloses is None:
+            st.info("Cruces por sexo no disponibles.")
+        else:
+            _bloque_cruces_sexo(anio_sel)
 
     with tab_social:
         _bloque_social()

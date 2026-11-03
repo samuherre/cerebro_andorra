@@ -49,6 +49,13 @@ ARCHIVO_UMBRALES = "umbrales_pobreza.csv"
 ARCHIVO_FECUNDIDAD = "tasa_fecundidad.csv"
 ARCHIVO_ECONOMIA = "economia_worldbank.csv"
 
+# Archivos procesados de la ampliación Cerebro Digital:
+ARCHIVO_POBLACION_POBLE = "poblacion_poble.csv"
+ARCHIVO_CRUCES_SEXO = "poblacion_cruces_sexo.csv"
+ARCHIVO_EDIFICIOS_SUELO = "edificios_suelo.csv"
+ARCHIVO_EQUIPAMIENTOS_SUELO = "equipamientos_suelo.csv"
+ARCHIVO_SALUD_AMBIENTE = "salud_educacion_ambiente.csv"
+
 # Nombre del GeoJSON de límites de las 7 parròquies dentro de datos_crudos/.
 ARCHIVO_GEOJSON_PARROQUIES = "parroquias_andorra.geojson"
 
@@ -358,3 +365,36 @@ def carga_geojson_parroquies() -> "dict | None":
             f"'{ruta}': {error}."
         )
         return None
+
+
+# --- Ampliación Cerebro Digital: Pueblos, Cruces, Suelo, Salud/Ambiente/Transporte ---
+
+
+@st.cache_data
+def carga_poblacion_poble() -> "pd.DataFrame | None":
+    """Carga la población de los 44 pueblos (pobles) de Andorra."""
+    return _lee_csv_procesado(ARCHIVO_POBLACION_POBLE)
+
+
+@st.cache_data
+def carga_poblacion_cruces_sexo() -> "pd.DataFrame | None":
+    """Carga los cruces demográficos bilaterales por sexo (edad, nacionalidad, origen)."""
+    return _lee_csv_procesado(ARCHIVO_CRUCES_SEXO)
+
+
+@st.cache_data
+def carga_edificios_suelo() -> "pd.DataFrame | None":
+    """Carga la morfología de edificios y alturas por uso del suelo."""
+    return _lee_csv_procesado(ARCHIVO_EDIFICIOS_SUELO)
+
+
+@st.cache_data
+def carga_equipamientos_suelo() -> "pd.DataFrame | None":
+    """Carga el inventario georreferenciado de transporte, salud, educación y servicios."""
+    return _lee_csv_procesado(ARCHIVO_EQUIPAMIENTOS_SUELO)
+
+
+@st.cache_data
+def carga_salud_ambiente() -> "pd.DataFrame | None":
+    """Carga los indicadores de salud, educación, conectividad y medio ambiente."""
+    return _lee_csv_procesado(ARCHIVO_SALUD_AMBIENTE)

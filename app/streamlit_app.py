@@ -55,6 +55,9 @@ from vistas import (  # noqa: E402
     panorama,
     poblacion,
     preguntas,
+    salud_educacion,
+    territorio_pueblos,
+    transporte_ambiente,
     vivienda,
 )
 
@@ -70,8 +73,11 @@ from vistas import (  # noqa: E402
 _PAGINAS = [
     ("Panorama", ":material/dashboard:", panorama.render, "panorama"),
     ("Población", ":material/groups:", poblacion.render, "poblacion"),
+    ("Territorio y pueblos", ":material/location_city:", territorio_pueblos.render, "territorio"),
     ("Vivienda", ":material/apartment:", vivienda.render, "vivienda"),
     ("Economía", ":material/trending_up:", economia.render, "economia"),
+    ("Salud y educación", ":material/health_and_safety:", salud_educacion.render, "salud"),
+    ("Transporte y ambiente", ":material/directions_bus:", transporte_ambiente.render, "transporte"),
     ("Mapa", ":material/map:", mapa.render, "mapa"),
     ("Andorra en preguntas", ":material/help:", preguntas.render, "preguntas"),
     ("Fuentes y método", ":material/fact_check:", fuentes.render, "fuentes"),

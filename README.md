@@ -1,4 +1,4 @@
-﻿# Cerebro Andorra
+# Cerebro Andorra
 
 Sistema de ingenieria de datos y analitica territorial del Principado de Andorra,
 construido bajo una arquitectura lakehouse para la materia de Gestion y Gobernanza
@@ -115,6 +115,11 @@ dinamico de la web, que representa oferta y no transaccion real).
 | Tasa de fecundidad (reclasificado de `oficial_810`) | Demografia | OBSERVADO | El crudo "indicadores economicos" contenia en realidad la tasa de fecundidad. |
 | Economia (Banco Mundial, World Bank Open Data API v2) | Macroeconomia | OBSERVADO | PIB, PIB per capita y poblacion total a escala pais, con licencia clara. |
 | Salario medio por sector de actividad (`oficial_2844`, CAEA nivel 1) | Empleo | OBSERVADO | Responde "en que sectores trabaja la gente y cuanto se gana"; 18 sectores + total. |
+| Poblacion por poble (`estadistica_id1096`, `poblacion_poble.csv`) | Territorio / Demografia | OBSERVADO | Desagrega las 7 parroquias en sus 44 pueblos (*pobles*) oficiales (2020-2025). |
+| Cruces demograficos por sexo (`id1098/1104/1138`, `poblacion_cruces_sexo.csv`) | Demografia | OBSERVADO | Piramide poblacional bilateral real (Hombres vs. Mujeres por edad, nacionalidad y origen). |
+| Morfologia de edificios y usos del suelo (`edificios_andorra.geojson` -> `edificios_suelo.csv`) | Urbanismo / Territorio | OBSERVADO | Clasifica los 1.144 edificios por uso del suelo y altura en plantas (`building:levels`). |
+| Infraestructura y equipamientos (`equipamientos_suelo.csv`) | Transporte / Salud / Educacion | OBSERVADO | Estaciones/paradas de bus, gasolineras, aparcamientos, centros sanitarios, educativos y servicios por parroquia. |
+| Salud, educacion, conectividad y medio ambiente (`salud_educacion_ambiente.csv`, Banco Mundial) | Salud / Educacion / Ambiente | OBSERVADO | Esperanza de vida, gasto sanitario, acceso a Internet, gasto educativo, energia renovable, bosques, emisiones CO2 y PM2.5. |
 
 Criterio de seleccion: se priorizan fuentes **oficiales (OBSERVADO)** y se admite
 una fuente **PROXY** (Indomio) unicamente para ganar granularidad de precios por

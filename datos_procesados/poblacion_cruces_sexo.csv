@@ -1,0 +1,337 @@
+dimension;sexo;categoria;anio;valor;fuente;vigencia;fecha_prueba;linaje
+sexo_edad_5;HOME;00-04 ANYS;2020;1315;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;00-04 ANYS;2021;1270;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;00-04 ANYS;2022;1194;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;00-04 ANYS;2023;1173;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;00-04 ANYS;2024;1165;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;00-04 ANYS;2025;1130;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;05-09 ANYS;2020;1816;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;05-09 ANYS;2021;1798;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;05-09 ANYS;2022;1764;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;05-09 ANYS;2023;1780;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;05-09 ANYS;2024;1758;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;05-09 ANYS;2025;1695;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;10-14 ANYS;2020;2146;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;10-14 ANYS;2021;2150;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;10-14 ANYS;2022;2158;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;10-14 ANYS;2023;2085;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;10-14 ANYS;2024;2072;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;10-14 ANYS;2025;2007;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;15-19 ANYS;2020;2100;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;15-19 ANYS;2021;2158;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;15-19 ANYS;2022;2209;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;15-19 ANYS;2023;2304;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;15-19 ANYS;2024;2335;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;15-19 ANYS;2025;2357;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;20-24 ANYS;2020;2314;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;20-24 ANYS;2021;2399;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;20-24 ANYS;2022;2401;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;20-24 ANYS;2023;2526;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;20-24 ANYS;2024;2573;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;20-24 ANYS;2025;2634;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;25-29 ANYS;2020;2464;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;25-29 ANYS;2021;2608;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;25-29 ANYS;2022;2781;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;25-29 ANYS;2023;3142;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;25-29 ANYS;2024;3249;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;25-29 ANYS;2025;3357;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;30-34 ANYS;2020;2654;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;30-34 ANYS;2021;2799;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;30-34 ANYS;2022;3042;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;30-34 ANYS;2023;3438;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;30-34 ANYS;2024;3548;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;30-34 ANYS;2025;3717;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;35-39 ANYS;2020;3012;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;35-39 ANYS;2021;2980;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;35-39 ANYS;2022;3071;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;35-39 ANYS;2023;3245;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;35-39 ANYS;2024;3453;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;35-39 ANYS;2025;3671;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;40-44 ANYS;2020;3384;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;40-44 ANYS;2021;3421;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;40-44 ANYS;2022;3445;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;40-44 ANYS;2023;3567;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;40-44 ANYS;2024;3627;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;40-44 ANYS;2025;3653;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;45-49 ANYS;2020;3717;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;45-49 ANYS;2021;3773;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;45-49 ANYS;2022;3843;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;45-49 ANYS;2023;3919;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;45-49 ANYS;2024;3986;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;45-49 ANYS;2025;3983;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;50-54 ANYS;2020;3555;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;50-54 ANYS;2021;3603;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;50-54 ANYS;2022;3757;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;50-54 ANYS;2023;3882;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;50-54 ANYS;2024;4019;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;50-54 ANYS;2025;4107;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;55-59 ANYS;2020;3293;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;55-59 ANYS;2021;3387;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;55-59 ANYS;2022;3518;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;55-59 ANYS;2023;3582;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;55-59 ANYS;2024;3687;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;55-59 ANYS;2025;3775;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;60-64 ANYS;2020;2544;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;60-64 ANYS;2021;2687;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;60-64 ANYS;2022;2822;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;60-64 ANYS;2023;3005;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;60-64 ANYS;2024;3123;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;60-64 ANYS;2025;3314;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;65-69 ANYS;2020;1860;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;65-69 ANYS;2021;1990;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;65-69 ANYS;2022;2080;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;65-69 ANYS;2023;2173;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;65-69 ANYS;2024;2298;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;65-69 ANYS;2025;2428;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;70-74 ANYS;2020;1442;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;70-74 ANYS;2021;1490;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;70-74 ANYS;2022;1528;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;70-74 ANYS;2023;1552;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;70-74 ANYS;2024;1615;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;70-74 ANYS;2025;1699;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;75-79 ANYS;2020;1024;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;75-79 ANYS;2021;1072;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;75-79 ANYS;2022;1169;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;75-79 ANYS;2023;1245;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;75-79 ANYS;2024;1263;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;75-79 ANYS;2025;1286;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;80-84 ANYS;2020;563;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;80-84 ANYS;2021;582;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;80-84 ANYS;2022;590;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;80-84 ANYS;2023;667;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;80-84 ANYS;2024;763;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;80-84 ANYS;2025;823;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;85 ANYS O MÉS;2020;537;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;85 ANYS O MÉS;2021;564;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;85 ANYS O MÉS;2022;603;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;85 ANYS O MÉS;2023;605;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;85 ANYS O MÉS;2024;599;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;HOME;85 ANYS O MÉS;2025;646;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;00-04 ANYS;2020;1235;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;00-04 ANYS;2021;1146;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;00-04 ANYS;2022;1150;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;00-04 ANYS;2023;1153;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;00-04 ANYS;2024;1152;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;00-04 ANYS;2025;1203;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;05-09 ANYS;2020;1789;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;05-09 ANYS;2021;1747;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;05-09 ANYS;2022;1712;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;05-09 ANYS;2023;1687;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;05-09 ANYS;2024;1630;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;05-09 ANYS;2025;1566;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;10-14 ANYS;2020;2029;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;10-14 ANYS;2021;2084;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;10-14 ANYS;2022;2116;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;10-14 ANYS;2023;2068;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;10-14 ANYS;2024;2026;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;10-14 ANYS;2025;1988;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;15-19 ANYS;2020;1973;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;15-19 ANYS;2021;1935;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;15-19 ANYS;2022;1935;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;15-19 ANYS;2023;2033;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;15-19 ANYS;2024;2104;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;15-19 ANYS;2025;2177;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;20-24 ANYS;2020;2005;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;20-24 ANYS;2021;2118;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;20-24 ANYS;2022;2192;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;20-24 ANYS;2023;2302;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;20-24 ANYS;2024;2241;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;20-24 ANYS;2025;2218;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;25-29 ANYS;2020;2174;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;25-29 ANYS;2021;2187;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;25-29 ANYS;2022;2237;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;25-29 ANYS;2023;2572;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;25-29 ANYS;2024;2696;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;25-29 ANYS;2025;2757;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;30-34 ANYS;2020;2513;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;30-34 ANYS;2021;2588;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;30-34 ANYS;2022;2687;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;30-34 ANYS;2023;2978;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;30-34 ANYS;2024;3076;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;30-34 ANYS;2025;3141;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;35-39 ANYS;2020;2962;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;35-39 ANYS;2021;2856;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;35-39 ANYS;2022;2796;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;35-39 ANYS;2023;2995;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;35-39 ANYS;2024;3111;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;35-39 ANYS;2025;3221;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;40-44 ANYS;2020;3418;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;40-44 ANYS;2021;3433;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;40-44 ANYS;2022;3402;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;40-44 ANYS;2023;3433;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;40-44 ANYS;2024;3387;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;40-44 ANYS;2025;3388;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;45-49 ANYS;2020;3645;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;45-49 ANYS;2021;3707;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;45-49 ANYS;2022;3709;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;45-49 ANYS;2023;3745;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;45-49 ANYS;2024;3723;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;45-49 ANYS;2025;3703;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;50-54 ANYS;2020;3323;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;50-54 ANYS;2021;3348;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;50-54 ANYS;2022;3476;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;50-54 ANYS;2023;3546;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;50-54 ANYS;2024;3662;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;50-54 ANYS;2025;3799;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;55-59 ANYS;2020;3045;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;55-59 ANYS;2021;3139;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;55-59 ANYS;2022;3218;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;55-59 ANYS;2023;3298;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;55-59 ANYS;2024;3369;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;55-59 ANYS;2025;3377;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;60-64 ANYS;2020;2354;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;60-64 ANYS;2021;2486;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;60-64 ANYS;2022;2654;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;60-64 ANYS;2023;2800;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;60-64 ANYS;2024;2895;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;60-64 ANYS;2025;3015;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;65-69 ANYS;2020;1745;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;65-69 ANYS;2021;1839;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;65-69 ANYS;2022;1942;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;65-69 ANYS;2023;2063;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;65-69 ANYS;2024;2148;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;65-69 ANYS;2025;2270;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;70-74 ANYS;2020;1402;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;70-74 ANYS;2021;1448;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;70-74 ANYS;2022;1495;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;70-74 ANYS;2023;1533;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;70-74 ANYS;2024;1590;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;70-74 ANYS;2025;1685;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;75-79 ANYS;2020;1028;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;75-79 ANYS;2021;1088;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;75-79 ANYS;2022;1147;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;75-79 ANYS;2023;1182;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;75-79 ANYS;2024;1234;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;75-79 ANYS;2025;1296;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;80-84 ANYS;2020;740;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;80-84 ANYS;2021;722;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;80-84 ANYS;2022;765;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;80-84 ANYS;2023;844;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;80-84 ANYS;2024;918;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;80-84 ANYS;2025;910;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;85 ANYS O MÉS;2020;895;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;85 ANYS O MÉS;2021;933;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;85 ANYS O MÉS;2022;980;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;85 ANYS O MÉS;2023;979;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;85 ANYS O MÉS;2024;1002;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_edad_5;DONA;85 ANYS O MÉS;2025;1062;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ALTRES;2020;4224;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ALTRES;2021;4504;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ALTRES;2022;4992;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ALTRES;2023;6435;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ALTRES;2024;6970;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ALTRES;2025;7465;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ANDORRANA;2020;18618;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ANDORRANA;2021;18822;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ANDORRANA;2022;19048;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ANDORRANA;2023;19124;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ANDORRANA;2024;19380;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ANDORRANA;2025;19604;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ESPANYOLA;2020;9684;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ESPANYOLA;2021;9804;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ESPANYOLA;2022;9912;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ESPANYOLA;2023;9975;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ESPANYOLA;2024;10008;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;ESPANYOLA;2025;10083;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;FRANCESA;2020;1498;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;FRANCESA;2021;1515;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;FRANCESA;2022;1557;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;FRANCESA;2023;1626;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;FRANCESA;2024;1624;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;FRANCESA;2025;1695;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;PORTUGUESA;2020;4251;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;PORTUGUESA;2021;4159;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;PORTUGUESA;2022;4104;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;PORTUGUESA;2023;4051;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;PORTUGUESA;2024;3982;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_nacionalidad;DONA;PORTUGUESA;2025;3929;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ALTRES;2020;4075;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ALTRES;2021;4452;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ALTRES;2022;5071;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ALTRES;2023;6714;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ALTRES;2024;7555;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ALTRES;2025;8224;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ANDORRANA;2020;19381;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ANDORRANA;2021;19607;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ANDORRANA;2022;19819;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ANDORRANA;2023;19853;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ANDORRANA;2024;20090;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ANDORRANA;2025;20211;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ESPANYOLA;2020;9527;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ESPANYOLA;2021;9912;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ESPANYOLA;2022;10304;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ESPANYOLA;2023;10476;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ESPANYOLA;2024;10691;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;ESPANYOLA;2025;10930;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;FRANCESA;2020;1925;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;FRANCESA;2021;2034;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;FRANCESA;2022;2108;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;FRANCESA;2023;2219;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;FRANCESA;2024;2250;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;FRANCESA;2025;2418;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;PORTUGUESA;2020;4832;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;PORTUGUESA;2021;4726;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;PORTUGUESA;2022;4673;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;PORTUGUESA;2023;4628;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;PORTUGUESA;2024;4547;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_nacionalidad;HOME;PORTUGUESA;2025;4499;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Andorra;2020;13755;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Andorra;2021;13904;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Andorra;2022;14014;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Andorra;2023;14099;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Andorra;2024;14254;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Andorra;2025;14310;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Espanya;2020;13925;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Espanya;2021;14318;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Espanya;2022;14732;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Espanya;2023;14881;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Espanya;2024;15111;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Espanya;2025;15325;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Portugal;2020;4712;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Portugal;2021;4621;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Portugal;2022;4569;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Portugal;2023;4506;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Portugal;2024;4443;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Portugal;2025;4399;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;França;2020;2393;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;França;2021;2511;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;França;2022;2573;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;França;2023;2678;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;França;2024;2699;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;França;2025;2875;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Altres;2020;4955;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Altres;2021;5377;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Altres;2022;6087;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Altres;2023;7726;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Altres;2024;8626;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;HOME;Altres;2025;9373;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Andorra;2020;12910;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Andorra;2021;13007;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Andorra;2022;13149;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Andorra;2023;13200;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Andorra;2024;13336;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Andorra;2025;13457;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Espanya;2020;14002;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Espanya;2021;14134;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Espanya;2022;14233;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Espanya;2023;14310;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Espanya;2024;14397;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Espanya;2025;14469;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Portugal;2020;4141;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Portugal;2021;4072;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Portugal;2022;4030;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Portugal;2023;3970;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Portugal;2024;3901;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Portugal;2025;3839;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;França;2020;2004;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;França;2021;2025;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;França;2022;2050;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;França;2023;2118;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;França;2024;2105;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;França;2025;2168;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Altres;2020;5218;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2020;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Altres;2021;5566;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2021;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Altres;2022;6151;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2022;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Altres;2023;7613;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2023;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Altres;2024;8225;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2024;2026-11-02;OBSERVADO
+sexo_lugar_nacimiento;DONA;Altres;2025;8843;Departament d'Estadística d'Andorra (sig.govern.ad, id1098/1104/1138);2025;2026-11-02;OBSERVADO

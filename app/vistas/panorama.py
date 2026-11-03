@@ -156,6 +156,70 @@ def render() -> None:
     with columna_precio:
         _cifra_precio_venta_medio()
 
+    # Segunda fila de resumen multisectorial (Territorio, Salud/Educación, Ambiente/Transporte)
+    pobles = carga_datos.carga_poblacion_poble()
+    edif = carga_datos.carga_edificios_suelo()
+    salud_amb = carga_datos.carga_salud_ambiente()
+
+    col_t1, col_t2, col_t3 = st.columns(3)
+    with col_t1:
+        with st.container(border=True):
+            st.markdown("#### 🏘️ Pueblos (*Pobles*)")
+            if not _es_dataframe_vacio(pobles):
+                anios_p = pd.to_numeric(pobles.get("anio"), errors="coerce").dropna()
+                if not anios_p.empty:
+                    a_max = int(anios_p.max())
+                    sub_p = pobles[pd.to_numeric(pobles["anio"], errors="coerce") == a_max]
+                    f_p = sub_p.iloc[0]
+                    componentes.cifra_gobernada(
+                        f"Localidades (pobles) censadas ({a_max})",
+                        len(sub_p),
+                        _metadato_desde_fila(f_p, str(a_max)),
+                        f_p.get("linaje"),
+                        id_fuente="F15",
+                    )
+            else:
+                st.caption("Ejecuta el pipeline para ver los 44 pueblos.")
+
+    with col_t2:
+        with st.container(border=True):
+            st.markdown("#### 🏗️ Huella Urbana y Suelo")
+            if not _es_dataframe_vacio(edif):
+                nums_e = pd.to_numeric(edif.get("num_edificios"), errors="coerce").dropna()
+                f_e = edif.iloc[0]
+                vig_e = str(f_e.get("vigencia", "2026"))
+                componentes.cifra_gobernada(
+                    f"Edificios catastrados ({vig_e})",
+                    f"{int(nums_e.sum()):,}".replace(",", "."),
+                    _metadato_desde_fila(f_e, vig_e),
+                    f_e.get("linaje"),
+                    id_fuente="F17",
+                )
+            else:
+                st.caption("Ejecuta el pipeline para ver el catastro de edificios.")
+
+    with col_t3:
+        with st.container(border=True):
+            st.markdown("#### 🌲 Salud, Energía y Clima")
+            if not _es_dataframe_vacio(salud_amb):
+                s_valid = salud_amb.copy()
+                s_valid["anio"] = pd.to_numeric(s_valid.get("anio"), errors="coerce")
+                s_valid["valor"] = pd.to_numeric(s_valid.get("valor"), errors="coerce")
+                s_valid = s_valid.dropna(subset=["anio", "valor"]).sort_values("anio")
+                if not s_valid.empty:
+                    f_s = s_valid.iloc[-1]
+                    a_s = int(f_s["anio"])
+                    u_s = str(f_s.get("unidad", "")).strip()
+                    componentes.cifra_gobernada(
+                        f"{f_s['indicador']} ({a_s})",
+                        f"{float(f_s['valor']):.2f} {u_s}".strip(),
+                        _metadato_desde_fila(f_s, str(a_s)),
+                        f_s.get("linaje"),
+                        id_fuente="F19",
+                    )
+            else:
+                st.caption("Indicadores sectoriales de salud y medio ambiente.")
+
     st.divider()
 
     # Bloque informativo visual sobre la gobernanza del proyecto
