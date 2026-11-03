@@ -12,6 +12,7 @@ if str(_DIR_APP) not in sys.path:
     sys.path.append(str(_DIR_APP))
 
 import carga_datos
+import estilos
 from componentes import cifra_gobernada
 
 ANIO_MIN = 2020
@@ -493,9 +494,10 @@ def _bloque_social() -> None:
 
 
 def render() -> None:
-    st.title("Gente y Población")
-    st.write(
-        "Demografía oficial del Departament d'Estadística d'Andorra con linaje y gobernanza auditable."
+    estilos.cabecera(
+        "Gente y población",
+        "Demografía oficial del Departament d'Estadística d'Andorra, con "
+        "linaje y gobernanza auditable en cada cifra.",
     )
 
     desgloses = carga_datos.carga_poblacion_desgloses()

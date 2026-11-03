@@ -17,6 +17,7 @@ if str(_DIR_APP) not in sys.path:
     sys.path.append(str(_DIR_APP))
 
 import carga_datos  # noqa: E402 - import tras ajustar sys.path
+import estilos  # noqa: E402 - import tras ajustar sys.path
 
 # Columnas del Inventario_Fuentes que la vista muestra
 _COLUMNAS_INVENTARIO = ["nombre", "fuente", "linaje", "estado", "motivo"]
@@ -33,14 +34,12 @@ _ETIQUETAS_COLUMNAS = {
 
 def render() -> None:
     """Renderiza la Vista_Fuentes estilizada con resumen métrico e inventario."""
-    st.title("Fuentes y Método")
-    st.markdown(
-        """
-        > Inventario auditable de los datasets del proyecto con su linaje de gobernanza y su estado de integración.  
-        > *Los datasets en estado **excluido** o **caído** detallan explícitamente su motivo.*
-        """
+    estilos.cabecera(
+        "Fuentes y método",
+        "Inventario auditable de los datasets del proyecto con su linaje de "
+        "gobernanza y su estado de integración. Los datasets excluidos o "
+        "caídos detallan su motivo.",
     )
-    st.divider()
 
     inventario = carga_datos.carga_inventario()
 

@@ -195,16 +195,54 @@ def _campos_economia():
     ]
 
 
+def _campos_empleo():
+    arch = "datos_procesados/salario_sector.csv"
+    preg = "¿En qué sectores trabaja la gente y cuánto se gana en cada uno?"
+    return [
+        [arch, "sector", "Descripció", "Sector de actividad (CAEA nivel 1) en español",
+         "Texto", "texto", "Hostelería", "No", "Uno de los sectores de actividad", CLAS,
+         "Se extrae de 'SALARI MEDIÀ PER SECTOR D'ACTIVITAT (NIVELL 1). <LETRA>-<SECTOR>' y se traduce a español", preg],
+        [arch, "letra_sector", "(código CAEA)", "Letra del sector de actividad (CAEA nivel 1)",
+         "Texto", "código", "H", "No", "A..T o TOTAL", CLAS,
+         "Se toma la letra anterior al guion de la Descripció", preg],
+        [arch, "salario_medio", "(valor del periodo)", "Salario medio mensual del sector en euros (último mes con dato)",
+         "Decimal", "€/mes", "1835.41", "No", "> 0 y ≤ 50000", CLAS,
+         "Se toma el último periodo mensual con salario positivo; se descartan los ceros (sector sin asalariados)", preg],
+        [arch, "es_total", "(derivado)", "Marca si la fila es el total de todos los sectores",
+         "Texto", "0/1", "0", "No", "0 o 1", CLAS,
+         "Se asigna 1 a la fila TOTAL y 0 al resto de sectores", preg],
+        [arch, "fuente", "(anotado)", "Origen oficial del salario por sector",
+         "Texto", "texto", "Departament d'Estadística d'Andorra", "No", "Texto de la fuente", CLAS,
+         "Se anota en el procesamiento (gobernanza)", preg],
+        [arch, "vigencia", "(anotado)", "Periodo mensual al que corresponde el salario",
+         "Texto", "AAAA/MM", "2025/12", "No", "2018/01 a 2025/12", CLAS,
+         "Se anota como el periodo del dato más reciente del sector", preg],
+        [arch, "fecha_prueba", "(anotado)", "Fecha real en que se verificó/procesó el salario",
+         "Fecha", "AAAA-MM-DD", "2026-11-02", "No", "Fecha ISO", CLAS,
+         "Se anota en el procesamiento con la fecha real de ejecución", preg],
+        [arch, "linaje", "(anotado)", "Clasificación de gobernanza del salario",
+         "Texto", "etiqueta", "OBSERVADO", "No", "OBSERVADO / ESTIMADO / PROXY", CLAS,
+         "Se etiqueta como OBSERVADO por ser dato oficial del Departament d'Estadística", preg],
+    ]
+
+
 # (id_fuente, csv_para_fecha, licencia_literal, generador_de_campos)
 # Los ID_Fuente coinciden con los del Inventario_Fuentes (datos_procesados/inventario_fuentes.csv):
 #   F10 = poblacion_desgloses.csv, F11 = umbrales_pobreza.csv,
-#   F12 = tasa_fecundidad.csv, F13 = economia_worldbank.csv.
+#   F12 = tasa_fecundidad.csv, F13 = economia_worldbank.csv,
+#   F14 = salario_sector.csv.
 FUENTES_NUEVAS = [
     ("F10", "poblacion_desgloses.csv", LICENCIA_ESTADISTICA, _campos_desgloses),
     ("F11", "umbrales_pobreza.csv", LICENCIA_ESTADISTICA, _campos_pobreza),
     ("F12", "tasa_fecundidad.csv", LICENCIA_ESTADISTICA, _campos_fecundidad),
     ("F13", "economia_worldbank.csv", LICENCIA_WORLDBANK, _campos_economia),
+    ("F14", "salario_sector.csv", LICENCIA_ESTADISTICA, _campos_empleo),
 ]
+
+# ID_Fuente que gestiona este script (Parte 3 + empleo). Se eliminan sus filas
+# previas antes de reinsertarlas para que el script sea idempotente (volver a
+# ejecutarlo no duplica entradas).
+IDS_GESTIONADOS = {"F10", "F11", "F12", "F13", "F14"}
 
 
 def _ultima_fila_con_datos(ws):
@@ -234,11 +272,34 @@ def _asegura_cabeceras_nuevas(ws):
     ws.column_dimensions["O"].width = 34
 
 
+def _elimina_filas_gestionadas(ws):
+    """Borra las filas cuyas entradas pertenecen a los ID_Fuente gestionados.
+
+    Hace el script idempotente: antes de reinsertar los campos de F10..F14 se
+    eliminan sus filas previas (identificadas por el ID_Fuente en la columna 1),
+    de modo que volver a ejecutarlo no duplique entradas en el diccionario.
+    """
+    filas_a_borrar = [
+        r
+        for r in range(5, ws.max_row + 1)
+        if str(ws.cell(row=r, column=1).value or "").strip() in IDS_GESTIONADOS
+    ]
+    # Borrar de abajo hacia arriba para no desplazar los índices pendientes.
+    for r in sorted(filas_a_borrar, reverse=True):
+        ws.delete_rows(r, 1)
+    if filas_a_borrar:
+        print(
+            f"[OK] Eliminadas {len(filas_a_borrar)} fila(s) previa(s) de "
+            "ID_Fuente gestionados para evitar duplicados."
+        )
+
+
 def main():
     wb = openpyxl.load_workbook(RUTA_XLSX)
     ws = wb[HOJA]
 
     _asegura_cabeceras_nuevas(ws)
+    _elimina_filas_gestionadas(ws)
 
     fila = _ultima_fila_con_datos(ws) + 1
     total = 0

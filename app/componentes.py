@@ -43,21 +43,33 @@ _DISTINTIVO_LINAJE = {
 }
 
 
-def _badge_linaje(linaje: str) -> str:
-    """Construye el texto Markdown de un badge de color para un linaje.
+# Clase CSS del chip de linaje (definida en app/estilos.py) por etiqueta.
+_CLASE_CHIP_LINAJE = {
+    gobernanza.LINAJE_OBSERVADO: "ca-chip-observado",
+    gobernanza.LINAJE_ESTIMADO: "ca-chip-estimado",
+    gobernanza.LINAJE_PROXY: "ca-chip-proxy",
+}
 
-    Devuelve una cadena con el emoji y el nombre del linaje coloreados mediante
-    la sintaxis de color de Streamlit (``:color[texto]``), de modo que PROXY sea
-    visualmente distinguible de OBSERVADO y ESTIMADO (Req 7.2).
+
+def _badge_linaje(linaje: str) -> str:
+    """Construye el HTML de un chip de color para una etiqueta de linaje.
+
+    Devuelve un ``<span>`` con la clase del chip correspondiente (definida en
+    ``app/estilos.py``), de modo que PROXY (dato de mercado) sea inmediatamente
+    distinguible de OBSERVADO (oficial) y ESTIMADO, con un aspecto de "chip"
+    más legible que el emoji suelto de la versión anterior (Req 7.2).
 
     Args:
         linaje: etiqueta de linaje válida (OBSERVADO/ESTIMADO/PROXY).
 
     Returns:
-        Cadena Markdown lista para pasar a ``st.caption``/``st.markdown``.
+        Cadena HTML lista para pasar a ``st.markdown(..., unsafe_allow_html=True)``.
     """
     distintivo = _DISTINTIVO_LINAJE.get(linaje, {"emoji": "⚪", "color": "gray"})
-    return f"{distintivo['emoji']} :{distintivo['color']}[**{linaje}**]"
+    clase = _CLASE_CHIP_LINAJE.get(linaje, "")
+    return (
+        f'<span class="ca-chip {clase}">{distintivo["emoji"]} {linaje}</span>'
+    )
 
 
 def cifra_gobernada(
@@ -129,7 +141,10 @@ def cifra_gobernada(
         f"Fuente: {registro['fuente']} · Vigencia: {registro['vigencia']} · "
         f"Fecha de prueba: {registro['fecha_prueba']}"
     )
-    st.markdown(f"Linaje: {_badge_linaje(registro['linaje'])}")
+    st.markdown(
+        f"Linaje: {_badge_linaje(registro['linaje'])}",
+        unsafe_allow_html=True,
+    )
 
     # Si la cifra tiene un ID_Fuente asociado, se ofrece su Detalle_Gobernanza a
     # un clic (Req 5.5). Sin id_fuente, el comportamiento es idéntico al de v1.

@@ -21,6 +21,7 @@ if str(_DIR_APP) not in sys.path:
 
 import carga_datos  # noqa: E402 - import tras ajustar sys.path
 import componentes  # noqa: E402 - import tras ajustar sys.path
+import estilos  # noqa: E402 - import tras ajustar sys.path
 
 
 def _es_dataframe_vacio(datos) -> bool:
@@ -137,14 +138,12 @@ def _cifra_precio_venta_medio() -> None:
 def render() -> None:
     """Renderiza la Vista Panorama estilizada."""
     # Encabezado principal estilizado
-    st.title("Panorama General")
-    st.markdown(
-        """
-        > Resumen macro con los indicadores fundamentales del **Principado de Andorra**.  
-        > *Toda cifra expuesta en este panel cuenta con su correspondiente trazabilidad, vigencia y linaje auditable.*
-        """
+    estilos.cabecera(
+        "Panorama general",
+        "Resumen macro con los indicadores fundamentales del Principado de "
+        "Andorra. Toda cifra cuenta con su trazabilidad, vigencia y linaje "
+        "auditable.",
     )
-    st.divider()
 
     # Sección de KPIs Principales
     st.subheader("Indicadores Clave del País")

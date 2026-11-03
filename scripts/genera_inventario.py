@@ -15,6 +15,7 @@ import csv
 import os
 
 import gobernanza
+from procesa_empleo import FUENTE_EMPLEO
 from procesa_inversiones import FUENTE_INVERSIONES
 from procesa_turismo import FUENTE_TURISMO
 
@@ -62,6 +63,9 @@ VIGENCIA_WORLDBANK = "2015-2024"
 # traen las columnas de año 2020..2025 (ver procesa_turismo/procesa_inversiones).
 VIGENCIA_TURISMO = "2020-2025"
 VIGENCIA_INVERSIONES = "2020-2025"
+
+# Vigencia del salario por sector: serie mensual 2018-2025 (último mes con dato).
+VIGENCIA_EMPLEO = "2018-2025"
 
 # Formato del ID_Fuente: la letra 'F' seguida de exactamente dos dígitos,
 # soportando de F01 a F99 (hasta 99 fuentes) (Req 5.1).
@@ -353,6 +357,16 @@ def construye_inventario(
             "estado": "integrado",
             "motivo": "",
             "licencia": LICENCIA_WORLDBANK,
+        },
+        {
+            "nombre": "salario_sector.csv",
+            "fuente": FUENTE_EMPLEO,
+            "vigencia": VIGENCIA_EMPLEO,
+            "fecha_prueba": fecha_prueba,
+            "linaje": gobernanza.LINAJE_OBSERVADO,
+            "estado": "integrado",
+            "motivo": "",
+            "licencia": LICENCIA_ESTADISTICA,
         },
         # --- Reclasificados: crudos mal etiquetados (contenido real) --------
         # Se conserva el id_fuente (la clave lógica es el 'nombre', que no

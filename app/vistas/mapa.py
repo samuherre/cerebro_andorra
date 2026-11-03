@@ -49,6 +49,7 @@ if str(_DIR_APP) not in sys.path:
 
 import carga_datos  # noqa: E402 - import tras ajustar sys.path
 import componentes  # noqa: E402 - import tras ajustar sys.path (uso en 10.2)
+import estilos  # noqa: E402 - import tras ajustar sys.path
 
 # --- Parròquies canónicas --------------------------------------------------
 # Las siete parròquies de Andorra con la grafía canónica del proyecto (idéntica
@@ -819,10 +820,10 @@ def render() -> None:
     """
     import streamlit as st
 
-    st.title("Mapa del territorio")
-    st.write(
+    estilos.cabecera(
+        "Mapa del territorio",
         "Indicador por parròquia sobre el mapa de Andorra. Cada cifra conserva "
-        "su fuente, vigencia, fecha de prueba y etiqueta de linaje."
+        "su fuente, vigencia, fecha de prueba y etiqueta de linaje.",
     )
 
     # Selector del indicador: se muestran las etiquetas visibles de INDICADORES

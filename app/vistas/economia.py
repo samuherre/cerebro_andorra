@@ -55,11 +55,13 @@ if str(_DIR_APP) not in sys.path:
 
 import carga_datos  # noqa: E402 - import tras ajustar sys.path
 import componentes  # noqa: E402 - import tras ajustar sys.path
+import estilos  # noqa: E402 - import tras ajustar sys.path
 
 # ID_Fuente estables en el Inventario_Fuentes para habilitar el
 # Detalle_Gobernanza a un clic bajo cada cifra (Req 5.5).
 _ID_FUENTE_TURISMO = "F03"
 _ID_FUENTE_INVERSIONES = "F04"
+_ID_FUENTE_EMPLEO = "F14"
 
 # Subcadenas identificadoras del `nombre` de la fuente de economía en el
 # Inventario_Fuentes, para resolver su ID_Fuente de forma dinámica (sin fijarlo
@@ -301,6 +303,100 @@ def _seccion_inversiones() -> None:
                 )
 
 
+def _seccion_empleo() -> None:
+    """Renderiza la sección de salario medio por sector de actividad.
+
+    Carga ``salario_sector.csv`` y muestra, para el conjunto de sectores de
+    actividad (CAEA nivel 1), el salario medio mensual en euros del periodo más
+    reciente disponible. Presenta un gráfico de barras horizontal ordenado de
+    mayor a menor y la cifra gobernada del total (linaje OBSERVADO), pasando
+    ``id_fuente=F14`` para habilitar el Detalle_Gobernanza (Req 3.7, 5.5).
+
+    Si no hay datos (DataFrame ``None`` o vacío), muestra un mensaje de ausencia
+    en español sin interrumpir el resto de la vista.
+
+    Returns:
+        None. El efecto es la representación en la interfaz de Streamlit.
+    """
+    st.header("Empleo: salario por sector de actividad")
+    st.caption(
+        "Salario medio mensual por sector de actividad (datos oficiales, "
+        "linaje OBSERVADO). Responde a «¿en qué sectores trabaja la gente y "
+        "cuánto se gana en cada uno?»."
+    )
+
+    salario = carga_datos.carga_salario_sector()
+    if salario is None or salario.empty:
+        st.warning(
+            "Salario por sector: Dato no disponible. No se pudieron cargar los "
+            "datos procesados de salario por sector."
+        )
+        return
+
+    # Separar el total (es_total == 1) de los sectores individuales.
+    datos = salario.copy()
+    datos["salario_medio"] = pd.to_numeric(
+        datos.get("salario_medio"), errors="coerce"
+    )
+    datos = datos.dropna(subset=["salario_medio"])
+    if datos.empty:
+        st.warning(
+            "Salario por sector: Dato no disponible. No hay salarios "
+            "utilizables en los datos."
+        )
+        return
+
+    es_total = datos.get("es_total").astype(str).str.strip() == "1"
+    sectores = datos[~es_total].sort_values("salario_medio", ascending=True)
+    fila_total = datos[es_total]
+
+    # Gráfico de barras horizontal de los sectores (import perezoso de Plotly).
+    if not sectores.empty:
+        try:
+            import plotly.express as px
+
+            figura = px.bar(
+                sectores,
+                x="salario_medio",
+                y="sector",
+                orientation="h",
+                labels={"salario_medio": "Salario medio (€/mes)", "sector": ""},
+                text="salario_medio",
+            )
+            figura.update_traces(
+                texttemplate="%{text:.0f} €", textposition="outside"
+            )
+            figura.update_layout(
+                margin={"r": 30, "t": 10, "l": 0, "b": 0},
+                height=520,
+            )
+            st.plotly_chart(figura, use_container_width=True)
+        except Exception as error:  # noqa: BLE001 - degradación segura
+            print(f"[economia] No se pudo importar plotly (empleo): {error}.")
+            st.dataframe(
+                sectores[["sector", "salario_medio"]].rename(
+                    columns={
+                        "sector": "Sector",
+                        "salario_medio": "Salario medio (€/mes)",
+                    }
+                ),
+                use_container_width=True,
+                hide_index=True,
+            )
+
+    # Cifra gobernada del total (todos los sectores).
+    if not fila_total.empty:
+        fila = fila_total.iloc[0]
+        valor = _euros(fila["salario_medio"])
+        componentes.cifra_gobernada(
+            "Salario medio mensual (todos los sectores)",
+            valor,
+            _metadato_de_fila(fila),
+            _linaje_de_fila(fila),
+            id_fuente=_ID_FUENTE_EMPLEO,
+        )
+
+
 def _id_fuente_economia(inventario) -> "str | None":
     """Resuelve el ID_Fuente de la economía World Bank desde el inventario.
 
@@ -524,25 +620,26 @@ def render() -> None:
     """Renderiza la Vista Economía completa.
 
     Punto de entrada que ``streamlit_app.py`` invoca para pintar la vista.
-    Presenta tres secciones identificables y separadas —turismo, inversiones
-    inmobiliarias y macroeconomía del Banco Mundial—, cada una con sus cifras
-    gobernadas de linaje OBSERVADO. Un fallo de datos en una sección muestra su
-    mensaje de ausencia sin interrumpir la carga de las otras (Req 3.7, 3.8,
-    4.7, 4.8, 5.1-5.5).
+    Presenta cuatro secciones identificables y separadas —turismo, inversiones
+    inmobiliarias, empleo (salario por sector) y macroeconomía del Banco
+    Mundial—, cada una con sus cifras gobernadas de linaje OBSERVADO. Un fallo
+    de datos en una sección muestra su mensaje de ausencia sin interrumpir la
+    carga de las otras (Req 3.7, 3.8, 4.7, 4.8, 5.1-5.5).
 
     Returns:
         None. El efecto es la representación en la interfaz de Streamlit.
     """
-    st.title("Economía")
-    st.write(
-        "Indicadores económicos oficiales de Andorra: el presupuesto de turismo, "
-        "el número de inversiones inmobiliarias por año y los indicadores "
-        "macroeconómicos del Banco Mundial. Toda cifra se muestra con su fuente, "
-        "vigencia, fecha de prueba y etiqueta de linaje."
+    estilos.cabecera(
+        "Economía",
+        "Turismo, inversiones inmobiliarias, salario medio por sector de "
+        "actividad e indicadores macroeconómicos del Banco Mundial. Toda cifra "
+        "se muestra con su fuente, vigencia, fecha de prueba y linaje.",
     )
 
     _seccion_turismo()
     st.divider()
     _seccion_inversiones()
+    st.divider()
+    _seccion_empleo()
     st.divider()
     _seccion_economia()

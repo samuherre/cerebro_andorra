@@ -47,6 +47,7 @@ for _ruta in (_DIR_APP, _DIR_VISTAS):
     if str(_ruta) not in sys.path:
         sys.path.append(str(_ruta))
 
+import estilos  # noqa: E402
 from vistas import (  # noqa: E402
     economia,
     fuentes,
@@ -57,19 +58,19 @@ from vistas import (  # noqa: E402
     vivienda,
 )
 
-# Mapa de navegación: rótulo de la barra lateral -> función render() de la vista
-# correspondiente. El orden define el orden de las opciones en el menú.
-# Primero las vistas heredadas de la v1 y a continuación las nuevas de la Parte 2
-# (Mapa, Preguntas y Economía), conservando un orden lógico.
-_VISTAS = {
-    "Panorama": panorama.render,
-    "Gente / Población": poblacion.render,
-    "Vivienda": vivienda.render,
-    "Fuentes y Método": fuentes.render,
-    "Mapa": mapa.render,
-    "Preguntas (Entrega 1)": preguntas.render,
-    "Economía": economia.render,
-}
+# Definición de las vistas como páginas de navegación (título, icono y función
+# de render). El orden define el orden del menú lateral. La antigua pestaña
+# "Preguntas (Entrega 1)" pasa a llamarse "Andorra en preguntas", un rótulo
+# orientado al usuario final en lugar de la jerga interna del curso.
+_PAGINAS = [
+    ("Panorama", ":material/dashboard:", panorama.render),
+    ("Población", ":material/groups:", poblacion.render),
+    ("Vivienda", ":material/apartment:", vivienda.render),
+    ("Economía", ":material/trending_up:", economia.render),
+    ("Mapa", ":material/map:", mapa.render),
+    ("Andorra en preguntas", ":material/help:", preguntas.render),
+    ("Fuentes y método", ":material/fact_check:", fuentes.render),
+]
 
 # Nombres del grupo que se muestran de forma visible en la barra lateral del
 # despliegue publico.
@@ -170,29 +171,36 @@ def main() -> None:
         layout="wide",
     )
 
+    # Identidad visual coherente en todas las vistas (CSS de marca).
+    estilos.aplica_estilo_global()
+
     # Compuerta_Acceso OPCIONAL: solo pide clave si hay una configurada en el
     # servidor (st.secrets / variable de entorno). Si no, no interrumpe el
     # arranque y la app funciona con normalidad.
     if not compuerta_acceso():
         return
 
-    st.sidebar.title("Cerebro Andorra")
-    st.sidebar.write(
+    # Cabecera de marca en la barra lateral.
+    st.sidebar.markdown("### 🇦🇩 Cerebro Andorra")
+    st.sidebar.caption(
         "Cerebro de datos del Principat d'Andorra. Toda cifra se muestra con su "
         "fuente, vigencia, fecha de prueba y etiqueta de linaje."
     )
 
-    seleccion = st.sidebar.radio(
-        "Vistas",
-        options=list(_VISTAS.keys()),
-        index=0,
-    )
+    # Navegación moderna con iconos (st.navigation / st.Page). Cada página
+    # envuelve la función render() de su vista conservando título e icono.
+    paginas = [
+        st.Page(funcion, title=titulo, icon=icono)
+        for titulo, icono, funcion in _PAGINAS
+    ]
+    navegacion = st.navigation(paginas, position="sidebar")
 
-    # Nombres del grupo visibles en la barra lateral.
+    # Nombres del grupo visibles en la barra lateral (requisito de la entrega).
+    st.sidebar.divider()
     st.sidebar.caption(_EQUIPO)
 
-    # Enrutar: invocar el render() de la vista elegida.
-    _VISTAS[seleccion]()
+    # Ejecuta la página seleccionada.
+    navegacion.run()
 
 
 if __name__ == "__main__":

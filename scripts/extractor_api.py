@@ -32,6 +32,14 @@ INDICADORES_MAESTROS = [
         "nombre": "indicadores_economicos",
         "descripcion": "Indicadores macroeconómicos y empleo",
     },
+    {
+        "idDivision": 2844,
+        "nombre": "salario_sector",
+        "descripcion": (
+            "Salario medio mensual por sector de actividad (nivel 1), "
+            "serie mensual del Departament d'Estadística d'Andorra"
+        ),
+    },
 ]
 
 

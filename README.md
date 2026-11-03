@@ -63,6 +63,12 @@ streamlit run app/streamlit_app.py
 Extractores de red (opcionales, fuera del pipeline, bajo demanda):
 
 ```powershell
+# Fuentes oficiales de sig.govern.ad -> datos_crudos/oficial_<id>_<nombre>.csv
+# (incluye el salario por sector, idDivision=2844)
+cd scripts
+python extractor_api.py
+cd ..
+
 # Economia real del Banco Mundial -> datos_crudos/worldbank_<codigo>.json
 python scripts/descarga_worldbank.py
 
@@ -92,7 +98,8 @@ cerebro_andorra/
 El sistema integra fuentes al lago eligiendolas por responder a las preguntas de
 la Entrega 1 (cuanta gente vive aqui, como se compone la poblacion, cuanto vale el
 metro cuadrado, cuanto pesa el turismo, como se mueve la inversion inmobiliaria,
-como evoluciona la economia) y por tener un linaje auditable. Cada dato se
+como evoluciona la economia y en que sectores trabaja la gente) y por tener un
+linaje auditable. Cada dato se
 clasifica segun la taxonomia de gobernanza: **OBSERVADO** (oficial / censo /
 transaccion real), **ESTIMADO** (consenso del sector) o **PROXY** (dato de mercado
 dinamico de la web, que representa oferta y no transaccion real).
@@ -107,6 +114,7 @@ dinamico de la web, que representa oferta y no transaccion real).
 | Umbrales de pobreza (reclasificado de `oficial_820`) | Social | OBSERVADO | El crudo "transacciones" contenia en realidad umbrales de pobreza e ingresos. |
 | Tasa de fecundidad (reclasificado de `oficial_810`) | Demografia | OBSERVADO | El crudo "indicadores economicos" contenia en realidad la tasa de fecundidad. |
 | Economia (Banco Mundial, World Bank Open Data API v2) | Macroeconomia | OBSERVADO | PIB, PIB per capita y poblacion total a escala pais, con licencia clara. |
+| Salario medio por sector de actividad (`oficial_2844`, CAEA nivel 1) | Empleo | OBSERVADO | Responde "en que sectores trabaja la gente y cuanto se gana"; 18 sectores + total. |
 
 Criterio de seleccion: se priorizan fuentes **oficiales (OBSERVADO)** y se admite
 una fuente **PROXY** (Indomio) unicamente para ganar granularidad de precios por
@@ -292,6 +300,32 @@ Resumen honesto de lo aprendido en cada parte. El detalle vive en
 - La vista de preguntas se reorientó a tono de usuario final ("Andorra en
   preguntas"); las preguntas sin fuente abierta y de licencia clara (transacciones
   y seguridad por parroquia) quedan declaradas como pendientes con su motivo.
+
+### Parte final - Empleo, preguntas y rediseno visual
+
+- **Empleo por sectores integrado (pregunta que antes quedaba pendiente):** el
+  barrido de la API oficial (`sig.govern.ad`, endpoint `/data` por `idDivision`)
+  revelo el `idDivision=2844`, "Salari medià per sector d'activitat (nivell 1)":
+  salario medio mensual por sector (serie 2018-2025). Se integro como OBSERVADO
+  (`salario_sector.csv`, F14) tomando para cada sector el ultimo mes con dato
+  positivo (los ceros son sectores sin asalariados, no un salario real; se
+  excluyen Pesca y "declarante sin actividad"). Con esto la pregunta "en que
+  sectores trabaja la gente y cuanto se gana" pasa de pendiente a resuelta (18
+  sectores + total).
+- **La pregunta de transacciones se replanteo con honestidad:** el total nacional
+  de inversiones inmobiliarias si existe y ahora se responde; lo que no existe con
+  licencia abierta es el **desglose por parroquia**, que queda como el unico limite
+  declarado de ese dominio. La vista Vivienda dejo de mostrar "dato no disponible"
+  y ahora presenta la serie oficial de inversiones con su cifra gobernada.
+- **Confirmacion de que `oficial_820` no son transacciones:** se verifico de nuevo
+  que su contenido real son umbrales de pobreza (ya reclasificados en la Parte 3),
+  por lo que sigue excluido con su motivo.
+- **Rediseno visual con identidad de Andorra:** se anadio un tema propio
+  (`.streamlit/config.toml`) y una capa de estilos compartida (`app/estilos.py`)
+  con la paleta de la bandera (azul, dorado y rojo), cabeceras "hero" coherentes en
+  todas las vistas, tarjetas con sombra suave, chips de linaje mas legibles y una
+  navegacion lateral moderna con iconos (`st.navigation` / `st.Page`). La pestana
+  interna "Preguntas (Entrega 1)" se renombro a "Andorra en preguntas".
 
 ## Bitacora de IA
 

@@ -20,6 +20,7 @@ if str(_DIR_APP) not in sys.path:
 
 import carga_datos  # noqa: E402 - import tras ajustar sys.path
 import componentes  # noqa: E402 - import tras ajustar sys.path
+import estilos  # noqa: E402 - import tras ajustar sys.path
 
 _TEXTO_OFERTA_PROXY = (
     "Precio de oferta de anuncios de Indomio (linaje PROXY): no es una "
@@ -30,6 +31,8 @@ _CLAVES_POBLACION = ("poblac", "798")
 _CLAVES_PRECIOS = ("precios_vivienda", "indomio")
 _CLAVES_TURISMO = ("turismo", "681")
 _CLAVES_ECONOMIA = ("economia_worldbank", "world bank", "banco mundial")
+_CLAVES_EMPLEO = ("salario_sector", "2844", "sector d'activitat")
+_CLAVES_INVERSIONES = ("inversiones_inmobiliarias", "2729", "inversions")
 
 _PARTIDA_TOTAL_TURISMO = "TOTAL PRESSUPOST DE DESPESES"
 
@@ -38,11 +41,12 @@ _CLAVE_INDICADOR_PIB = "pib"
 
 _PENDIENTES_BASE = [
     {
-        "pregunta": "¿Cuántas transacciones inmobiliarias hay por parròquia?",
+        "pregunta": "¿Cómo se reparten las inversiones inmobiliarias por parròquia?",
         "motivo": (
-            "No se encontró una fuente abierta y de licencia clara con el número "
-            "de transacciones inmobiliarias desglosado por parròquia en Andorra; "
-            "se documentó el intento en la bitácora y no se inventa una cifra."
+            "El total nacional de inversiones inmobiliarias sí está integrado "
+            "(ver «¿Cuántas inversiones inmobiliarias hay?»), pero la fuente "
+            "oficial no publica el desglose por parròquia con licencia clara; "
+            "ese nivel de detalle queda pendiente y no se inventa una cifra."
         ),
     },
     {
@@ -54,6 +58,14 @@ _PENDIENTES_BASE = [
         ),
     },
 ]
+
+
+def _euros_es(valor: float) -> str:
+    """Formatea un importe en euros con separador de miles en estilo español."""
+    return (
+        f"{float(valor):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+        + " €"
+    )
 
 
 def _es_dataframe_vacio(datos) -> bool:
@@ -277,8 +289,88 @@ def _respuesta_economia(inventario) -> "dict | None":
 
 
 def _respuesta_empleo(inventario) -> "dict | None":
-    """Construye la respuesta a "¿cuánta gente trabaja y en qué sectores?"."""
-    return None
+    """Construye la respuesta a "¿en qué sectores trabaja la gente?"."""
+    salario = carga_datos.carga_salario_sector()
+    if _es_dataframe_vacio(salario):
+        return None
+    if "sector" not in salario.columns or "salario_medio" not in salario.columns:
+        return None
+
+    datos = salario.copy()
+    datos["salario_medio"] = pd.to_numeric(
+        datos["salario_medio"], errors="coerce"
+    )
+    datos = datos.dropna(subset=["salario_medio"])
+    if datos.empty:
+        return None
+
+    es_total = datos.get("es_total").astype(str).str.strip() == "1"
+    sectores = datos[~es_total]
+    if sectores.empty:
+        return None
+
+    # Sector mejor pagado como titular de la respuesta.
+    fila_top = sectores.loc[sectores["salario_medio"].idxmax()]
+    fila_ref = datos.iloc[0]
+    vigencia = fila_ref.get("vigencia")
+    if vigencia is None or str(vigencia).strip() == "":
+        return None
+
+    n_sectores = int(sectores["sector"].nunique())
+
+    return {
+        "pregunta": "¿En qué sectores trabaja la gente y cuánto se gana?",
+        "etiqueta": (
+            f"Sector mejor pagado: {fila_top['sector']} ({vigencia})"
+        ),
+        "valor": _euros_es(float(fila_top["salario_medio"])),
+        "metadato": _metadato_desde_fila(fila_ref, vigencia),
+        "linaje": fila_ref.get("linaje"),
+        "id_fuente": _id_fuente_por_nombre(inventario, *_CLAVES_EMPLEO),
+        "nota": (
+            f"Salario medio mensual por sector de actividad en {n_sectores} "
+            "sectores (CAEA nivel 1). El detalle completo está en la vista "
+            "Economía."
+        ),
+    }
+
+
+def _respuesta_inversiones(inventario) -> "dict | None":
+    """Construye la respuesta a "¿cuántas inversiones inmobiliarias hay?"."""
+    inversiones = carga_datos.carga_inversiones()
+    if _es_dataframe_vacio(inversiones):
+        return None
+    if "anio" not in inversiones.columns or "num_inversiones" not in inversiones.columns:
+        return None
+
+    anios = pd.to_numeric(inversiones["anio"], errors="coerce").dropna()
+    if anios.empty:
+        return None
+
+    anio_reciente = int(anios.max())
+    filas = inversiones[
+        pd.to_numeric(inversiones["anio"], errors="coerce") == anio_reciente
+    ]
+    nums = pd.to_numeric(filas.get("num_inversiones"), errors="coerce").dropna()
+    if nums.empty:
+        return None
+
+    num = int(nums.iloc[0])
+    fila_ref = filas.iloc[0]
+
+    return {
+        "pregunta": "¿Cuántas inversiones inmobiliarias hay?",
+        "etiqueta": f"Inversiones inmobiliarias ({anio_reciente})",
+        "valor": f"{num:,}".replace(",", "."),
+        "metadato": _metadato_desde_fila(fila_ref, str(anio_reciente)),
+        "linaje": fila_ref.get("linaje"),
+        "id_fuente": _id_fuente_por_nombre(inventario, *_CLAVES_INVERSIONES),
+        "nota": (
+            "Número de inversiones inmobiliarias oficiales registradas en "
+            "Andorra el año más reciente (dato nacional, no desglosado por "
+            "parròquia)."
+        ),
+    }
 
 
 def _evalua_preguntas(inventario) -> "tuple[list, list]":
@@ -306,10 +398,16 @@ def _evalua_preguntas(inventario) -> "tuple[list, list]":
             "(la descarga del Banco Mundial es un extractor bajo demanda).",
         ),
         (
-            "¿Cuánta gente trabaja y en qué sectores?",
+            "¿En qué sectores trabaja la gente y cuánto se gana?",
             _respuesta_empleo,
-            "No se ha integrado ninguna fuente oficial de empleo por sectores; "
-            "no existen datos procesados que respondan a esta pregunta.",
+            "No se han integrado datos oficiales de salario o empleo por "
+            "sectores; no existen datos procesados que respondan a esta pregunta.",
+        ),
+        (
+            "¿Cuántas inversiones inmobiliarias hay?",
+            _respuesta_inversiones,
+            "No hay datos procesados de inversiones inmobiliarias disponibles "
+            "en este momento.",
         ),
     ]
 
@@ -382,14 +480,12 @@ def _muestra_pendientes(pendientes: list) -> None:
 
 def render() -> None:
     """Renderiza la Vista_Preguntas completa estilizada."""
-    st.title(" Andorra en Preguntas")
-    st.markdown(
-        """
-        > Resolvemos las dudas más habituales sobre Andorra con cifras vivas del lago de datos.  
-        > *Cada respuesta incluye su trazabilidad. Las dudas que aún no podemos responder las declaramos con total transparencia.*
-        """
+    estilos.cabecera(
+        "Andorra en preguntas",
+        "Resolvemos las dudas más habituales sobre Andorra con cifras vivas "
+        "del lago de datos. Cada respuesta incluye su trazabilidad; lo que aún "
+        "no podemos responder lo declaramos con transparencia.",
     )
-    st.divider()
 
     inventario = carga_datos.carga_inventario()
     respondidas, pendientes = _evalua_preguntas(inventario)

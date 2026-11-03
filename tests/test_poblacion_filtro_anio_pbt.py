@@ -82,7 +82,8 @@ def _selectbox(label=None, *args, **kwargs):
     options = kwargs.get("options")
     if args:
         options = args[0]
-    if label == "Año" or options is None:
+    etiqueta = str(label or "")
+    if etiqueta.startswith("Año") or options is None:
         return _fake_streamlit._anio_forzado
     opciones = list(options)
     return opciones[0] if opciones else None
@@ -131,6 +132,9 @@ _fake_streamlit.divider = _registra
 _fake_streamlit.dataframe = _registra
 _fake_streamlit.plotly_chart = _registra
 _fake_streamlit.expander = _expander
+_fake_streamlit.container = lambda *args, **kwargs: _ColumnaDummy()
+_fake_streamlit.title = _registra
+_fake_streamlit.tabs = lambda etiquetas, **kwargs: [_ColumnaDummy() for _ in etiquetas]
 _fake_streamlit._anio_forzado = None
 sys.modules["streamlit"] = _fake_streamlit
 

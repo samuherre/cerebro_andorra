@@ -32,6 +32,7 @@ import sys
 
 import genera_inventario
 import procesa_economia
+import procesa_empleo
 import procesa_indicadores_sociales
 import procesa_inversiones
 import procesa_poblacion
@@ -69,6 +70,7 @@ def main() -> int:
         ("Procesamiento de desgloses de población", procesa_poblacion_desgloses.procesa),
         ("Procesamiento de indicadores sociales", procesa_indicadores_sociales.procesa),
         ("Procesamiento de economía (World Bank)", procesa_economia.procesa),
+        ("Procesamiento de salario por sector", procesa_empleo.procesa),
         ("Generación del inventario de fuentes", genera_inventario.procesa),
     ]
 

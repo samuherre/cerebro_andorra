@@ -1,0 +1,15 @@
+# Tema visual de Cerebro Andorra.
+# Paleta inspirada en la bandera de Andorra (azul, amarillo/dorado y rojo),
+# con el azul como color primario y un fondo claro y limpio para una lectura
+# cómoda también en móvil.
+
+[theme]
+primaryColor = "#1A3C8F"            # Azul Andorra (acento principal)
+backgroundColor = "#FFFFFF"          # Fondo claro
+secondaryBackgroundColor = "#F4F6FB" # Tarjetas y barra lateral
+textColor = "#1C2433"                # Texto principal
+font = "sans serif"
+
+[server]
+# Evita la recogida de estadísticas de uso en despliegues locales.
+headless = true

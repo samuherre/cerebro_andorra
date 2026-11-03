@@ -83,6 +83,8 @@ _fake_streamlit.markdown = _noop
 _fake_streamlit.warning = _noop
 _fake_streamlit.set_page_config = _noop
 _fake_streamlit.columns = _fake_columns
+_fake_streamlit.container = lambda *args, **kwargs: _ColumnaDummy()
+_fake_streamlit.divider = _noop
 _fake_streamlit.cache_data = _cache_data
 sys.modules["streamlit"] = _fake_streamlit
 
@@ -200,11 +202,17 @@ def test_precio_venta_medio_acotado_y_redondeado(precios):
     assert len(_CAPTURA_METRIC) == 1
     mostrado = _CAPTURA_METRIC[0]
 
-    # A lo sumo dos decimales: por el formato .2f la parte decimal tiene 2
-    # dígitos; se comprueba explícitamente sobre la cadena y sobre el número.
-    valor = float(mostrado)
-    assert "." in mostrado
-    assert len(mostrado.split(".")[1]) <= 2
+    # La vista formatea en estilo español con símbolo de euro
+    # (p. ej. "1.234,56 €"): se normaliza a un float estándar antes de validar.
+    # Se quita el símbolo de euro y los espacios, se eliminan los separadores de
+    # miles ('.') y se convierte la coma decimal en punto.
+    texto_numero = mostrado.replace("€", "").strip()
+    texto_numero = texto_numero.replace(".", "").replace(",", ".")
+
+    # A lo sumo dos decimales: la parte decimal tiene como máximo 2 dígitos.
+    valor = float(texto_numero)
+    assert "." in texto_numero
+    assert len(texto_numero.split(".")[1]) <= 2
     assert round(valor, 2) == valor
 
     # Acotado entre el mínimo y el máximo de los precios de entrada. Se permite

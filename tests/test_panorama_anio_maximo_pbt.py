@@ -87,6 +87,8 @@ _fake_streamlit.warning = _registra
 _fake_streamlit.info = _registra
 _fake_streamlit.selectbox = _registra
 _fake_streamlit.set_page_config = _registra
+_fake_streamlit.container = lambda *args, **kwargs: _ColumnaFalsa()
+_fake_streamlit.divider = _registra
 _fake_streamlit.cache_data = _cache_data
 sys.modules["streamlit"] = _fake_streamlit
 

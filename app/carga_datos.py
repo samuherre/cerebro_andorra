@@ -38,6 +38,7 @@ ARCHIVO_PRECIOS = "precios_vivienda.csv"
 ARCHIVO_INVENTARIO = "inventario_fuentes.csv"
 ARCHIVO_TURISMO = "turismo.csv"
 ARCHIVO_INVERSIONES = "inversiones_inmobiliarias.csv"
+ARCHIVO_SALARIO_SECTOR = "salario_sector.csv"
 
 # Archivos procesados de la Parte 3 (enriquecimiento):
 # - desgloses de población (tabla larga con la columna 'dimension'),
@@ -153,6 +154,23 @@ def carga_inversiones() -> "pd.DataFrame | None":
         muestre el mensaje de ausencia sin interrumpirse (Req 4.8).
     """
     return _lee_csv_procesado(ARCHIVO_INVERSIONES)
+
+
+@st.cache_data
+def carga_salario_sector() -> "pd.DataFrame | None":
+    """Carga la tabla de salario medio por sector de actividad.
+
+    Lee ``datos_procesados/salario_sector.csv`` (separador ``;``, UTF-8), que
+    contiene un registro por sector de actividad con su salario medio mensual
+    en euros (linaje OBSERVADO) y responde a "¿en qué sectores trabaja la gente
+    y cuánto se gana en cada uno?".
+
+    Returns:
+        Un ``DataFrame`` con el salario por sector, o ``None`` si el archivo no
+        existe o no puede leerse, para que la vista muestre el mensaje de
+        ausencia sin interrumpirse.
+    """
+    return _lee_csv_procesado(ARCHIVO_SALARIO_SECTOR)
 
 
 # --- Parte 3: desgloses de población --------------------------------------

@@ -7,10 +7,12 @@ cifras sin fuente, sin vigencia y sin fecha de prueba"). Los precios de Indomio
 llevan la Etiqueta_Linaje PROXY, que ``cifra_gobernada`` distingue visualmente
 con un badge de color propio (Req 7.1, 7.2, 7.3).
 
-Las transacciones inmobiliarias oficiales (linaje OBSERVADO) no se procesan en
-v1 —el dataset ``oficial_820`` quedó excluido por no coincidir su contenido con
-el nombre del archivo—, de modo que la vista muestra un indicador de "Dato no
-disponible" para las transacciones oficiales (Req 7.4, 7.5).
+La actividad inmobiliaria oficial se representa con las inversiones
+inmobiliarias registradas por año (linaje OBSERVADO, fuente oficial), que sí
+están integradas en el lago. El dataset ``oficial_820`` sigue excluido (su
+contenido real son umbrales de pobreza, reclasificados aparte); el recuento de
+transacciones de compraventa desglosado por parròquia no existe con licencia
+abierta y queda documentado como límite (Req 7.4, 7.5).
 
 La app se lanza desde la raíz del repositorio (``streamlit run
 app/streamlit_app.py``); como este módulo vive en ``app/vistas/`` se añade la
@@ -35,6 +37,7 @@ if str(_DIR_APP) not in sys.path:
 
 import carga_datos  # noqa: E402 - import tras ajustar sys.path
 import componentes  # noqa: E402 - import tras ajustar sys.path
+import estilos  # noqa: E402 - import tras ajustar sys.path
 
 # Etiqueta de linaje de los precios de Indomio
 _LINAJE_PRECIOS = "PROXY"
@@ -130,27 +133,90 @@ def _muestra_precios(precios: "pd.DataFrame") -> None:
                 )
 
 
-def _muestra_transacciones_oficiales() -> None:
-    """Muestra el indicador de "Dato no disponible" para transacciones oficiales."""
-    st.subheader(" Transacciones inmobiliarias oficiales")
+def _muestra_inversiones_oficiales() -> None:
+    """Muestra las inversiones inmobiliarias oficiales (linaje OBSERVADO).
+
+    Sustituye al antiguo indicador de "Dato no disponible": en vez de declarar
+    ausente la actividad inmobiliaria oficial, muestra el número de inversiones
+    inmobiliarias registradas por año (fuente oficial, OBSERVADO) con su cifra
+    gobernada y su serie, y aclara el límite real: no hay desglose por parròquia
+    ni un recuento de transacciones de compraventa con licencia abierta.
+    """
+    st.subheader("Actividad inmobiliaria oficial")
+    st.caption(
+        "Inversiones inmobiliarias registradas en Andorra por año (datos "
+        "oficiales, linaje OBSERVADO)."
+    )
+
+    inversiones = carga_datos.carga_inversiones()
+    if inversiones is None or inversiones.empty:
+        with st.container(border=True):
+            st.warning("Inversiones inmobiliarias oficiales: Dato no disponible")
+            st.caption(
+                "Motivo: no se pudieron cargar los datos procesados de "
+                "inversiones inmobiliarias."
+            )
+        return
+
+    datos = inversiones.copy()
+    datos["anio"] = pd.to_numeric(datos.get("anio"), errors="coerce")
+    datos["num_inversiones"] = pd.to_numeric(
+        datos.get("num_inversiones"), errors="coerce"
+    )
+    datos = datos.dropna(subset=["anio", "num_inversiones"]).sort_values("anio")
+    if datos.empty:
+        with st.container(border=True):
+            st.warning("Inversiones inmobiliarias oficiales: Dato no disponible")
+            st.caption("Motivo: no hay registros de inversiones utilizables.")
+        return
+
+    # Cifra gobernada del año más reciente + serie histórica.
+    fila = datos.iloc[-1]
+    anio = int(fila["anio"])
     with st.container(border=True):
-        st.warning("Transacciones oficiales: Dato no disponible")
-        st.caption(
-            "Motivo: no existen datos procesados de transacciones inmobiliarias "
-            "oficiales (linaje OBSERVADO) en esta versión (dataset `oficial_820` excluido)."
+        componentes.cifra_gobernada(
+            f"Inversiones inmobiliarias registradas ({anio})",
+            int(fila["num_inversiones"]),
+            {
+                "fuente": fila.get("fuente"),
+                "vigencia": str(anio),
+                "fecha_prueba": fila.get("fecha_prueba"),
+            },
+            fila.get("linaje"),
+            id_fuente="F04",
         )
+
+        try:
+            import plotly.express as px
+
+            figura = px.bar(
+                datos,
+                x="anio",
+                y="num_inversiones",
+                labels={"anio": "Año", "num_inversiones": "Nº de inversiones"},
+                text="num_inversiones",
+            )
+            figura.update_traces(textposition="outside")
+            figura.update_layout(margin={"r": 0, "t": 10, "l": 0, "b": 0})
+            st.plotly_chart(figura, use_container_width=True)
+        except Exception as error:  # noqa: BLE001 - degradación segura
+            print(f"[vivienda] No se pudo importar plotly: {error}.")
+
+    st.info(
+        "Límite actual: la fuente oficial publica el total nacional de "
+        "inversiones, no el número de transacciones de compraventa desglosado "
+        "por parròquia. Ese nivel de detalle queda pendiente y se documenta en "
+        "la bitácora, sin inventar cifras."
+    )
 
 
 def render() -> None:
     """Renderiza la Vista_Vivienda completa."""
-    st.title("Vivienda y Mercado Inmobiliario")
-    st.markdown(
-        """
-        > Análisis de precios de oferta de venta y alquiler por m² en el Principado de Andorra.  
-        > *Los valores expuestos cuentan con linaje **PROXY** al provenir de fuentes de mercado (Indomio).*
-        """
+    estilos.cabecera(
+        "Vivienda y mercado inmobiliario",
+        "Precios de oferta de venta y alquiler por m² (linaje PROXY, de "
+        "Indomio) y la actividad inmobiliaria oficial de Andorra.",
     )
-    st.divider()
 
     precios = carga_datos.carga_precios()
     if precios is None or precios.empty:
@@ -162,4 +228,4 @@ def render() -> None:
         _muestra_precios(precios)
 
     st.divider()
-    _muestra_transacciones_oficiales()
+    _muestra_inversiones_oficiales()
