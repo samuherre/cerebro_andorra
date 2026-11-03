@@ -195,6 +195,57 @@ def _campos_economia():
     ]
 
 
+def _campos_turismo():
+    arch = "datos_procesados/turismo.csv"
+    return [
+        [arch, "periodo", "Any / període", "Año al que corresponde la partida de turismo",
+         "Texto", "año", "2024", "No", "2020 a 2025", CLAS,
+         "Se normaliza el año a texto", "¿Cómo evoluciona el presupuesto de turismo en el tiempo?"],
+        [arch, "partida", "Concepte", "Partida o concepto de gasto de Andorra Turisme SAU",
+         "Texto", "texto", "DESPESES DE FUNCIONAMENT", "No", "Texto del concepto", CLAS,
+         "Se conserva el nombre del concepto tal como viene de la fuente", "¿En qué se reparte el gasto de turismo?"],
+        [arch, "valor_eur", "Import (€)", "Importe en euros de la partida de turismo",
+         "Decimal", "€", "17378555.0", "No", "≥ 0", CLAS,
+         "Se convierte el importe a número decimal", "¿Cuánto gasta Andorra en turismo por año?"],
+        [arch, "fuente", "(anotado)", "Origen oficial del dato de turismo",
+         "Texto", "texto", "Departament d'Estadística d'Andorra (estadistica_681, Andorra Turisme SAU)", "No", "Texto de la fuente", CLAS,
+         "Se anota en el procesamiento (gobernanza)", "¿De dónde viene la cifra de turismo? (trazabilidad)"],
+        [arch, "vigencia", "(anotado)", "Año al que corresponde la cifra de turismo",
+         "Texto", "año", "2024", "No", "2020 a 2025", CLAS,
+         "Se anota como el año del propio registro", "¿A qué periodo corresponde la cifra?"],
+        [arch, "fecha_prueba", "(anotado)", "Fecha real en que se verificó/procesó el dato",
+         "Fecha", "AAAA-MM-DD", "2026-11-02", "No", "Fecha ISO", CLAS,
+         "Se anota en el procesamiento con la fecha real de ejecución", "¿Cuándo se comprobó la cifra? (frescura)"],
+        [arch, "linaje", "(anotado)", "Clasificación de gobernanza del dato",
+         "Texto", "etiqueta", "OBSERVADO", "No", "OBSERVADO / ESTIMADO / PROXY", CLAS,
+         "Se etiqueta como OBSERVADO por ser dato oficial de ejecución presupuestaria", "¿Qué fiabilidad tiene la cifra?"],
+    ]
+
+
+def _campos_inversiones():
+    arch = "datos_procesados/inversiones_inmobiliarias.csv"
+    return [
+        [arch, "anio", "Any", "Año al que corresponde el número de inversiones",
+         "Entero", "año", "2024", "No", "2020 a 2025", CLAS,
+         "Se normaliza el año a entero", "¿Cómo evoluciona la inversión inmobiliaria en el tiempo?"],
+        [arch, "num_inversiones", "Nombre d'inversions immobiliàries", "Número de inversiones inmobiliarias registradas en el año",
+         "Entero", "inversiones", "501", "No", "≥ 0", CLAS,
+         "Se valida que sea entero no negativo", "¿Cuánta inversión inmobiliaria hay por año?"],
+        [arch, "fuente", "(anotado)", "Origen oficial del dato de inversiones",
+         "Texto", "texto", "Departament d'Estadística d'Andorra (estadistica_2729, inversions immobiliàries)", "No", "Texto de la fuente", CLAS,
+         "Se anota en el procesamiento (gobernanza)", "¿De dónde viene la cifra de inversiones? (trazabilidad)"],
+        [arch, "vigencia", "(anotado)", "Año al que corresponde la cifra de inversiones",
+         "Texto", "año", "2024", "No", "2020 a 2025", CLAS,
+         "Se anota como el año del propio registro", "¿A qué periodo corresponde la cifra?"],
+        [arch, "fecha_prueba", "(anotado)", "Fecha real en que se verificó/procesó el dato",
+         "Fecha", "AAAA-MM-DD", "2026-11-02", "No", "Fecha ISO", CLAS,
+         "Se anota en el procesamiento con la fecha real de ejecución", "¿Cuándo se comprobó la cifra? (frescura)"],
+        [arch, "linaje", "(anotado)", "Clasificación de gobernanza del dato",
+         "Texto", "etiqueta", "OBSERVADO", "No", "OBSERVADO / ESTIMADO / PROXY", CLAS,
+         "Se etiqueta como OBSERVADO por ser dato oficial de registro", "¿Qué fiabilidad tiene la cifra?"],
+    ]
+
+
 def _campos_empleo():
     arch = "datos_procesados/salario_sector.csv"
     preg = "¿En qué sectores trabaja la gente y cuánto se gana en cada uno?"
@@ -227,11 +278,16 @@ def _campos_empleo():
 
 
 # (id_fuente, csv_para_fecha, licencia_literal, generador_de_campos)
-# Los ID_Fuente coinciden con los del Inventario_Fuentes (datos_procesados/inventario_fuentes.csv):
+# Los ID_Fuente coinciden EXACTAMENTE con los del Inventario_Fuentes
+# (datos_procesados/inventario_fuentes.csv) para que cada cifra de la app lleve
+# a su ficha del diccionario con el mismo ID (trazabilidad cifra -> ficha):
+#   F03 = turismo.csv, F04 = inversiones_inmobiliarias.csv,
 #   F10 = poblacion_desgloses.csv, F11 = umbrales_pobreza.csv,
 #   F12 = tasa_fecundidad.csv, F13 = economia_worldbank.csv,
 #   F14 = salario_sector.csv.
 FUENTES_NUEVAS = [
+    ("F03", "turismo.csv", LICENCIA_ESTADISTICA, _campos_turismo),
+    ("F04", "inversiones_inmobiliarias.csv", LICENCIA_ESTADISTICA, _campos_inversiones),
     ("F10", "poblacion_desgloses.csv", LICENCIA_ESTADISTICA, _campos_desgloses),
     ("F11", "umbrales_pobreza.csv", LICENCIA_ESTADISTICA, _campos_pobreza),
     ("F12", "tasa_fecundidad.csv", LICENCIA_ESTADISTICA, _campos_fecundidad),
@@ -239,10 +295,13 @@ FUENTES_NUEVAS = [
     ("F14", "salario_sector.csv", LICENCIA_ESTADISTICA, _campos_empleo),
 ]
 
-# ID_Fuente que gestiona este script (Parte 3 + empleo). Se eliminan sus filas
-# previas antes de reinsertarlas para que el script sea idempotente (volver a
-# ejecutarlo no duplica entradas).
-IDS_GESTIONADOS = {"F10", "F11", "F12", "F13", "F14"}
+# ID_Fuente que gestiona este script. Se eliminan sus filas previas antes de
+# reinsertarlas para que el script sea idempotente (volver a ejecutarlo no
+# duplica entradas). Se incluyen tambien los ID obsoletos F30/F31 (turismo e
+# inversiones quedaron con esos ID en una version anterior del diccionario, pero
+# en el inventario son F03/F04): al estar aqui, sus filas antiguas se eliminan y
+# se reescriben con el ID correcto, alineando diccionario e inventario.
+IDS_GESTIONADOS = {"F03", "F04", "F10", "F11", "F12", "F13", "F14", "F30", "F31"}
 
 
 def _ultima_fila_con_datos(ws):

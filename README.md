@@ -241,6 +241,28 @@ no requiere tarjeta de credito**. Pasos:
 La justificacion completa frente a las alternativas probadas esta en la bitacora de
 herramientas (`documentacion_bitacora/`).
 
+## Bitacora de exploracion (2+ herramientas por tramo)
+
+Como exige el taller, en cada tramo con decision no trivial se probaron **al
+menos dos herramientas sobre los mismos datos** antes de elegir una. La tabla
+resume cada comparacion con las mismas columnas; el detalle de cada una vive en
+`documentacion_bitacora/` (archivos 2, 3 y 4).
+
+| Tramo | Herramienta | Que pidio para empezar | Licencia (OSI? cambio reciente?) | Donde quedan los datos | Se rehace con un comando? | Estado del proyecto | Que resolvio de nuestra pregunta | Que no pudo | Quedo? Por que |
+|---|---|---|---|---|---|---|---|---|---|
+| Lago / Procesamiento | **pandas** | `pip install pandas`; nada de cuenta ni Docker | BSD-3 (OSI); estable, sin cambios de licencia | En memoria y en los CSV de `datos_procesados/` | Si: `python ejecuta_pipeline.py` | Maduro y mantenido | `melt()` para ancho->largo y `str`/`re` para limpiar `7,115(+14.8%)` de Indomio | Nada relevante a esta escala (decenas de filas) | **Si**: directo para este volumen e integra nativo con Streamlit |
+| Lago / Procesamiento | DuckDB | `pip install duckdb`; sin cuenta | MIT (OSI); activo | En un `.duckdb` o Parquet; aqui se exportaria a CSV igual | Si, pero via SQL | Muy activo (v1.x) | `UNPIVOT` y regex en SQL resuelven lo mismo | Menos idiomatico para el equipo; su ventaja (columnar, spilling) no aparece a esta escala | No (candidato futuro si el lago crece a millones de filas) |
+| Vistas / Presentacion | **Streamlit** | `pip install streamlit`; sin cuenta ni tarjeta | Apache-2.0 (OSI); estable | Los datos se leen de `datos_procesados/`; nada se sube a terceros | Si: `streamlit run app/streamlit_app.py` | Muy activo | Patron "cifra + metadato + linaje" trivial (`st.metric`/`st.caption`); despliegue gratis en Community Cloud | Interactividad avanzada (callbacks encadenados) exige mas trabajo | **Si**: menos codigo para el patron repetido y despliegue directo |
+| Vistas / Presentacion | Dash (Plotly) | `pip install dash`; sin cuenta | MIT (OSI); activo | Igual: datos locales, nada a terceros | Si, con mas configuracion | Activo | Permite interactividad fina con callbacks | Mas codigo repetitivo para el patron cifra+metadato de 7 vistas | No (candidato para interactividad compleja futura) |
+| Mapa / Geoespacial | **Plotly Express** (`choropleth_map`, `open-street-map`) | Solo `plotly`; **sin token** de Mapbox | MIT (Plotly, OSI) + ODbL de los tiles OSM | Datos locales (GeoJSON + tabla por parroquia); render en el navegador | Si: parte de `streamlit run` | Muy activo | Coropletas de las 7 parroquies por polimono con leyenda, hover y seleccion, responsive | — | **Si**: una sola dependencia, sin token, coropletas declarativo |
+| Mapa / Geoespacial | Folium / pydeck | Folium pide `streamlit-folium` extra; pydeck viene con Streamlit | BSD (Folium) / MIT (pydeck) + ODbL de tiles | Datos locales | Si | Activos | Folium hace coropletas comodo; pydeck por capas | Folium anade dependencia y capa HTML; varios estilos de pydeck **piden token Mapbox** (servicio de pago) | No (contradicen el requisito de "sin token/servicio de pago") |
+
+Herramienta que casi elegimos y que descartamos: **DuckDB** en el tramo Lago.
+Habria sido la eleccion si el lago fuera de millones de filas; a la escala actual
+(decenas a miles de filas) no aporta ventaja y pandas integra mejor con
+Streamlit. Si el volumen creciera, esa decision se reevaluaria y quedaria
+registrada en una nueva entrada de bitacora.
+
 ## Hallazgos por parte
 
 Resumen honesto de lo aprendido en cada parte. El detalle vive en
