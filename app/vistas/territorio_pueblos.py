@@ -169,14 +169,28 @@ def _seccion_pobles() -> None:
         pass
 
     with st.expander("Ver tabla completa de los pueblos y su variación interanual"):
-        tabla_vista = comparado[
-            ["poble", "parroquia", "pob_base", "poblacion", "var_pct"]
-        ].copy()
-        tabla_vista["var_pct"] = tabla_vista["var_pct"].apply(
-            lambda v: f"{float(v):+.1f} %" if pd.notna(v) else "—"
-        )
-        st.dataframe(
-            tabla_vista.rename(
+        # Cuando el año seleccionado coincide con el año base no hay variación
+        # que mostrar (sería 0 frente a sí mismo) y, además, duplicar la columna
+        # "Población (<año>)" rompería el render de la tabla (pyarrow no admite
+        # nombres de columna repetidos). En ese caso se muestra solo la columna
+        # de población de ese año.
+        if anio_sel == anio_base:
+            tabla_vista = comparado[["poble", "parroquia", "poblacion"]].copy()
+            tabla_vista = tabla_vista.rename(
+                columns={
+                    "poble": "Poble",
+                    "parroquia": "Parròquia",
+                    "poblacion": f"Población ({anio_sel})",
+                }
+            )
+        else:
+            tabla_vista = comparado[
+                ["poble", "parroquia", "pob_base", "poblacion", "var_pct"]
+            ].copy()
+            tabla_vista["var_pct"] = tabla_vista["var_pct"].apply(
+                lambda v: f"{float(v):+.1f} %" if pd.notna(v) else "—"
+            )
+            tabla_vista = tabla_vista.rename(
                 columns={
                     "poble": "Poble",
                     "parroquia": "Parròquia",
@@ -184,7 +198,10 @@ def _seccion_pobles() -> None:
                     "poblacion": f"Población ({anio_sel})",
                     "var_pct": f"Variación ({anio_base}-{anio_sel})",
                 }
-            ),
+            )
+
+        st.dataframe(
+            tabla_vista,
             use_container_width=True,
             hide_index=True,
         )
