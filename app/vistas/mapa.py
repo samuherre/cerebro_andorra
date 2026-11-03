@@ -868,3 +868,11 @@ def render() -> None:
             _plan_b_por_centroides(tabla, clave_interna)
 
     _detalle_parroquia(tabla, clave_interna)
+
+    st.divider()
+    try:
+        import panorama
+
+        panorama._bloque_mapa_3d_capital(prefijo_key="mapa")
+    except Exception:
+        pass

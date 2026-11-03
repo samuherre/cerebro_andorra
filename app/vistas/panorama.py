@@ -228,7 +228,7 @@ def _prepara_geojson_3d_capital() -> "dict | None":
     return {"type": "FeatureCollection", "features": features_3d}
 
 
-def _bloque_mapa_3d_capital() -> None:
+def _bloque_mapa_3d_capital(prefijo_key: str = "panorama") -> None:
     """Renderiza el visor 3D interactivo de Andorra la Vella (Capital)."""
     if not hasattr(st, "pydeck_chart"):
         return
@@ -280,13 +280,13 @@ def _bloque_mapa_3d_capital() -> None:
         cam_sel = st.selectbox(
             "Enfoque de cámara 3D sobre la capital",
             options=list(camaras.keys()),
-            key="panorama_camara_3d",
+            key=f"{prefijo_key}_camara_3d",
         )
     with col_est:
         est_sel = st.selectbox(
             "Estilo cartográfico base",
             options=list(estilos_mapa.keys()),
-            key="panorama_estilo_3d",
+            key=f"{prefijo_key}_estilo_3d",
         )
 
     cfg_cam = camaras[cam_sel]
@@ -364,6 +364,11 @@ def render() -> None:
         "Andorra y gemelo urbano 3D de su capital. Toda cifra cuenta con su "
         "trazabilidad, vigencia y linaje auditable.",
     )
+
+    # Mapa 3D de la capital de Andorra al inicio para impacto visual inmediato
+    _bloque_mapa_3d_capital(prefijo_key="panorama")
+
+    st.divider()
 
     # Sección de KPIs Principales
     st.subheader("Indicadores Clave del País")
@@ -451,11 +456,6 @@ def render() -> None:
                     )
             else:
                 st.caption("Indicadores sectoriales de salud y medio ambiente.")
-
-    st.divider()
-
-    # Mapa 3D de la capital de Andorra (Andorra la Vella y Escaldes-Engordany)
-    _bloque_mapa_3d_capital()
 
     st.divider()
 
