@@ -29,8 +29,6 @@ import pandas as pd
 import streamlit as st
 
 # --- Resolución de la ruta a app/ y reutilización de módulos transversales --
-# parents[1] sube desde app/vistas/vivienda.py hasta app/; desde ahí se importan
-# los módulos transversales de carga de datos y de componentes de UI.
 _DIR_APP = Path(__file__).resolve().parents[1]
 if str(_DIR_APP) not in sys.path:
     sys.path.append(str(_DIR_APP))
@@ -38,8 +36,7 @@ if str(_DIR_APP) not in sys.path:
 import carga_datos  # noqa: E402 - import tras ajustar sys.path
 import componentes  # noqa: E402 - import tras ajustar sys.path
 
-# Etiqueta de linaje de los precios de Indomio: dato de mercado (oferta), no
-# transacción real (Req 7.2).
+# Etiqueta de linaje de los precios de Indomio
 _LINAJE_PRECIOS = "PROXY"
 
 # Orden canónico de las 7 parròquies de Andorra para una presentación estable.
@@ -55,21 +52,7 @@ _PARROQUIES = [
 
 
 def _valor_o_none(fila: "pd.Series", columna: str):
-    """Devuelve el valor de una columna, o ``None`` si está ausente/NaN.
-
-    Un precio ausente (celda vacía o NaN, p. ej. porque el parseo de Indomio no
-    reconoció el formato) debe tratarse como dato no disponible, de modo que
-    ``cifra_gobernada`` muestre "Dato no disponible" para esa parròquia en lugar
-    de una cifra sin respaldo (Req 7.3).
-
-    Args:
-        fila: registro de precios de una parròquia.
-        columna: nombre de la columna de precio a leer.
-
-    Returns:
-        El valor de la celda, o ``None`` si la columna no existe o el valor es
-        nulo/NaN.
-    """
+    """Devuelve el valor de una columna, o ``None`` si está ausente/NaN."""
     if columna not in fila.index:
         return None
     valor = fila[columna]
@@ -79,20 +62,7 @@ def _valor_o_none(fila: "pd.Series", columna: str):
 
 
 def _metadato_de_fila(fila: "pd.Series") -> "dict | None":
-    """Construye el Metadato_Cifra de una fila de precios, o ``None``.
-
-    Reúne los campos ``fuente``, ``vigencia`` y ``fecha_prueba`` presentes en el
-    registro procesado. Si faltara alguna de esas columnas se devuelve ``None``
-    para que ``cifra_gobernada`` trate la cifra como no disponible por metadato
-    incompleto (Req 7.3).
-
-    Args:
-        fila: registro de precios de una parròquia.
-
-    Returns:
-        Diccionario con ``fuente``, ``vigencia`` y ``fecha_prueba``, o ``None``
-        si el registro no dispone de esas columnas.
-    """
+    """Construye el Metadato_Cifra de una fila de precios, o ``None``."""
     campos = ("fuente", "vigencia", "fecha_prueba")
     if not all(campo in fila.index for campo in campos):
         return None
@@ -100,17 +70,7 @@ def _metadato_de_fila(fila: "pd.Series") -> "dict | None":
 
 
 def _linaje_de_fila(fila: "pd.Series") -> "str | None":
-    """Devuelve la Etiqueta_Linaje del registro, o ``None`` si no la tiene.
-
-    Si la columna ``linaje`` falta o está vacía, se devuelve ``None`` para que
-    ``cifra_gobernada`` omita la cifra por linaje ausente (Req 7.3).
-
-    Args:
-        fila: registro de precios de una parròquia.
-
-    Returns:
-        La etiqueta de linaje del registro, o ``None`` si no está disponible.
-    """
+    """Devuelve la Etiqueta_Linaje del registro, o ``None`` si no la tiene."""
     valor = _valor_o_none(fila, "linaje")
     if valor is None:
         return None
@@ -119,20 +79,8 @@ def _linaje_de_fila(fila: "pd.Series") -> "str | None":
 
 
 def _muestra_precios(precios: "pd.DataFrame") -> None:
-    """Renderiza el precio de venta y de alquiler de cada una de las 7 parròquies.
-
-    Para cada parròquia (en orden canónico) muestra dos cifras gobernadas
-    —precio de venta y precio de alquiler en €/m²— reconstruyendo su
-    Metadato_Cifra y su linaje PROXY a partir del propio registro. Cuando la
-    parròquia no aparece en los datos, o cuando su precio, metadato o linaje
-    están ausentes, ``cifra_gobernada`` (con ``valor=None`` o metadato/linaje
-    incompletos) muestra "Dato no disponible" para esa parròquia sin afectar al
-    resto (Req 7.1, 7.2, 7.3).
-
-    Args:
-        precios: tabla de precios de vivienda procesados (una fila por parròquia).
-    """
-    st.subheader("Precios de vivienda por parròquia (€/m²)")
+    """Renderiza el precio de venta y de alquiler de cada una de las 7 parròquies."""
+    st.subheader(" Precios de vivienda por parròquia (€/m²)")
     st.caption(
         "Precios de oferta extraídos de Indomio (linaje PROXY): representan "
         "anuncios, no transacciones reales."
@@ -144,71 +92,65 @@ def _muestra_precios(precios: "pd.DataFrame") -> None:
         for _, fila in precios.iterrows():
             por_parroquia[str(fila["parroquia"]).strip()] = fila
 
+    # Presentación continua estilizada por parròquia
     for parroquia in _PARROQUIES:
-        st.markdown(f"### {parroquia}")
-        fila = por_parroquia.get(parroquia)
+        with st.container(border=True):
+            st.markdown(f"### {parroquia}")
+            fila = por_parroquia.get(parroquia)
 
-        if fila is None:
-            # La parròquia no está en los datos procesados: sin registro no hay
-            # metadato ni linaje, así que ambas cifras se marcan no disponibles.
-            componentes.cifra_gobernada(
-                "Precio de venta (€/m²)", None, None, None
-            )
-            componentes.cifra_gobernada(
-                "Precio de alquiler (€/m²)", None, None, None
-            )
-            continue
+            if fila is None:
+                columna_venta, columna_alquiler = st.columns(2)
+                with columna_venta:
+                    componentes.cifra_gobernada(
+                        "Precio de venta (€/m²)", None, None, None
+                    )
+                with columna_alquiler:
+                    componentes.cifra_gobernada(
+                        "Precio de alquiler (€/m²)", None, None, None
+                    )
+                continue
 
-        metadato = _metadato_de_fila(fila)
-        linaje = _linaje_de_fila(fila)
+            metadato = _metadato_de_fila(fila)
+            linaje = _linaje_de_fila(fila)
 
-        columna_venta, columna_alquiler = st.columns(2)
-        with columna_venta:
-            componentes.cifra_gobernada(
-                "Precio de venta (€/m²)",
-                _valor_o_none(fila, "precio_venta"),
-                metadato,
-                linaje,
-            )
-        with columna_alquiler:
-            componentes.cifra_gobernada(
-                "Precio de alquiler (€/m²)",
-                _valor_o_none(fila, "precio_alquiler"),
-                metadato,
-                linaje,
-            )
+            columna_venta, columna_alquiler = st.columns(2)
+            with columna_venta:
+                componentes.cifra_gobernada(
+                    "Precio de venta (€/m²)",
+                    _valor_o_none(fila, "precio_venta"),
+                    metadato,
+                    linaje,
+                )
+            with columna_alquiler:
+                componentes.cifra_gobernada(
+                    "Precio de alquiler (€/m²)",
+                    _valor_o_none(fila, "precio_alquiler"),
+                    metadato,
+                    linaje,
+                )
 
 
 def _muestra_transacciones_oficiales() -> None:
-    """Muestra el indicador de "Dato no disponible" para transacciones oficiales.
-
-    En v1 no existen datos procesados de transacciones inmobiliarias oficiales
-    (el dataset ``oficial_820`` quedó excluido por no coincidir su contenido con
-    el nombre del archivo), por lo que se muestra un indicador de dato no
-    disponible en lugar de cifras con linaje OBSERVADO (Req 7.4, 7.5).
-    """
-    st.subheader("Transacciones inmobiliarias oficiales")
-    st.warning("Transacciones oficiales: Dato no disponible")
-    st.caption(
-        "Motivo: no existen datos procesados de transacciones inmobiliarias "
-        "oficiales (linaje OBSERVADO) en esta versión."
-    )
+    """Muestra el indicador de "Dato no disponible" para transacciones oficiales."""
+    st.subheader(" Transacciones inmobiliarias oficiales")
+    with st.container(border=True):
+        st.warning("Transacciones oficiales: Dato no disponible")
+        st.caption(
+            "Motivo: no existen datos procesados de transacciones inmobiliarias "
+            "oficiales (linaje OBSERVADO) en esta versión (dataset `oficial_820` excluido)."
+        )
 
 
 def render() -> None:
-    """Renderiza la Vista_Vivienda completa.
-
-    Carga los precios de vivienda procesados y, si existen, muestra el precio de
-    venta y de alquiler de cada parròquia con su Metadato_Cifra y linaje PROXY
-    de forma visualmente distinguible (Req 7.1, 7.2, 7.3). A continuación
-    presenta el indicador de transacciones oficiales no disponibles (Req 7.4,
-    7.5). Si los precios no pueden cargarse, muestra un mensaje de ausencia sin
-    interrumpir la vista.
-
-    Returns:
-        None. El efecto es la representación en la interfaz de Streamlit.
-    """
-    st.title("Vivienda y mercado inmobiliario")
+    """Renderiza la Vista_Vivienda completa."""
+    st.title("Vivienda y Mercado Inmobiliario")
+    st.markdown(
+        """
+        > Análisis de precios de oferta de venta y alquiler por m² en el Principado de Andorra.  
+        > *Los valores expuestos cuentan con linaje **PROXY** al provenir de fuentes de mercado (Indomio).*
+        """
+    )
+    st.divider()
 
     precios = carga_datos.carga_precios()
     if precios is None or precios.empty:
@@ -219,4 +161,5 @@ def render() -> None:
     else:
         _muestra_precios(precios)
 
+    st.divider()
     _muestra_transacciones_oficiales()
