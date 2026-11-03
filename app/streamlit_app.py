@@ -62,14 +62,19 @@ from vistas import (  # noqa: E402
 # de render). El orden define el orden del menú lateral. La antigua pestaña
 # "Preguntas (Entrega 1)" pasa a llamarse "Andorra en preguntas", un rótulo
 # orientado al usuario final en lugar de la jerga interna del curso.
+# Cada entrada es (título, icono, función de render, url_path). El ``url_path``
+# es OBLIGATORIO y único: como todas las vistas exponen una función llamada
+# ``render``, Streamlit no puede inferir un pathname de URL distinto para cada
+# una (todas quedarían como "render" y colisionarían), así que se fija aquí uno
+# explícito por página.
 _PAGINAS = [
-    ("Panorama", ":material/dashboard:", panorama.render),
-    ("Población", ":material/groups:", poblacion.render),
-    ("Vivienda", ":material/apartment:", vivienda.render),
-    ("Economía", ":material/trending_up:", economia.render),
-    ("Mapa", ":material/map:", mapa.render),
-    ("Andorra en preguntas", ":material/help:", preguntas.render),
-    ("Fuentes y método", ":material/fact_check:", fuentes.render),
+    ("Panorama", ":material/dashboard:", panorama.render, "panorama"),
+    ("Población", ":material/groups:", poblacion.render, "poblacion"),
+    ("Vivienda", ":material/apartment:", vivienda.render, "vivienda"),
+    ("Economía", ":material/trending_up:", economia.render, "economia"),
+    ("Mapa", ":material/map:", mapa.render, "mapa"),
+    ("Andorra en preguntas", ":material/help:", preguntas.render, "preguntas"),
+    ("Fuentes y método", ":material/fact_check:", fuentes.render, "fuentes"),
 ]
 
 # Nombres del grupo que se muestran de forma visible en la barra lateral del
@@ -189,11 +194,16 @@ def main() -> None:
 
     # Navegación moderna con iconos (st.navigation / st.Page). Cada página
     # envuelve la función render() de su vista conservando título e icono.
+    # No se fija `position`: su valor por defecto ya coloca la navegación en la
+    # barra lateral y, además, el conjunto de valores admitidos por ese
+    # parámetro ha cambiado entre versiones de Streamlit ("sidebar" dejó de ser
+    # válido en versiones recientes), así que omitirlo hace la app robusta
+    # frente a la versión que resuelva el despliegue (Streamlit Cloud).
     paginas = [
-        st.Page(funcion, title=titulo, icon=icono)
-        for titulo, icono, funcion in _PAGINAS
+        st.Page(funcion, title=titulo, icon=icono, url_path=ruta, default=(indice == 0))
+        for indice, (titulo, icono, funcion, ruta) in enumerate(_PAGINAS)
     ]
-    navegacion = st.navigation(paginas, position="sidebar")
+    navegacion = st.navigation(paginas)
 
     # Nombres del grupo visibles en la barra lateral (requisito de la entrega).
     st.sidebar.divider()
